@@ -6,12 +6,14 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.awt.dnd.DropTargetEvent;
 import java.awt.dnd.DropTargetListener;
 
-public class StackandHeapDrop implements DropTargetListener {
+public class StackandHeapDrop implements DropTargetListener
+{
     private static final String ADD_BOX = "Add Box";
     private static final String ADD_PRIMITIVE = "Add Primitive";
 
     private JPanel panel;
     private Color defaultColor;
+
     public StackandHeapDrop(JPanel _panel)
     {
         panel = _panel;
@@ -22,15 +24,21 @@ public class StackandHeapDrop implements DropTargetListener {
     public void dragEnter(DropTargetDragEvent dtde) { }
 
     @Override
-    public void dragOver(DropTargetDragEvent dtde) {
+    public void dragOver(DropTargetDragEvent dtde)
+    {
         Transferable data = dtde.getTransferable();
-        try {
-            if (data.getTransferData(data.getTransferDataFlavors()[0]).equals(ADD_BOX)) {
-                panel.setBackground(new Color(0.0f, 0.9f, 0.0f, 0.5f));
-            } else {
+        try
+        {
+            if (data.getTransferData(data.getTransferDataFlavors()[0]).equals(ADD_BOX))
+            {
+                panel.setBackground(Color.GREEN);
+            }
+            else
+            {
                 dtde.rejectDrag();
             }
-        } catch(Exception e)
+        }
+        catch (Exception e)
         {
             // This "can never happen"
         }
@@ -52,7 +60,8 @@ public class StackandHeapDrop implements DropTargetListener {
             if (data.getTransferData(data.getTransferDataFlavors()[0]).equals(ADD_BOX))
             {
                 BoxPanel newPanel = BoxPanel.makeBox(panel);
-                if (newPanel != null) {
+                if (newPanel != null)
+                {
                     panel.add(newPanel);
                     panel.revalidate();
                 }
@@ -65,7 +74,8 @@ public class StackandHeapDrop implements DropTargetListener {
             {
                 JOptionPane.showMessageDialog(null, "Can't store references on Stack or Heap alone");
             }
-        } catch(Exception e)
+        }
+        catch (Exception e)
         {
             // This "can never happen"
         }

@@ -1,12 +1,9 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class LabelMouseListener implements MouseListener
+public class DragLabelMouseListener implements MouseListener
 {
-
     @Override
     public void mouseClicked(MouseEvent e)
     {
@@ -16,7 +13,9 @@ public class LabelMouseListener implements MouseListener
     @Override
     public void mousePressed(MouseEvent e)
     {
-        JComponent comp = (JComponent)e.getSource();
+        ButtonManager.getInstance().undoSetComponent();
+
+        JComponent comp = (JComponent) e.getSource();
         TransferHandler handler = comp.getTransferHandler();
         handler.exportAsDrag(comp, e, TransferHandler.COPY);
     }

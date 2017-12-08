@@ -3,19 +3,21 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class PanelMouseListener implements MouseListener
+public class BoxPanelMouseListener implements MouseListener
 {
-    private JPanel panel;
-    private Color defaultColor;
+    private Selectable panel;
 
-    PanelMouseListener(JPanel _panel)
+    BoxPanelMouseListener(Selectable _panel)
     {
         panel = _panel;
-        defaultColor = panel.getBackground();
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) { }
+    public void mouseClicked(MouseEvent e)
+    {
+        ButtonManager.getInstance().setComponent(panel, ButtonManager.ComponentType.BOX);
+        ((BoxPanel)panel).setSelected(true);
+    }
 
     @Override
     public void mousePressed(MouseEvent e) { }
@@ -26,13 +28,13 @@ public class PanelMouseListener implements MouseListener
     @Override
     public void mouseEntered(MouseEvent e)
     {
-        panel.setBackground(new Color(0.0f, 0.9f, 0.0f, 0.5f));
+        panel.setEntered(true);
     }
 
     @Override
     public void mouseExited(MouseEvent e)
     {
-        panel.setBackground(defaultColor);
+        panel.setEntered(false);
     }
 
 }

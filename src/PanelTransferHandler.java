@@ -5,14 +5,17 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 public class PanelTransferHandler extends TransferHandler
 {
 
-    public boolean canImport(TransferHandler.TransferSupport support) {
+    public boolean canImport(TransferHandler.TransferSupport support)
+    {
         // for the demo, we will only support drops (not clipboard paste)
-        if (!support.isDrop()) {
+        if (!support.isDrop())
+        {
             return false;
         }
 
         // we only import Strings
-        if (!support.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+        if (!support.isDataFlavorSupported(DataFlavor.stringFlavor))
+        {
             return false;
         }
 
@@ -20,23 +23,30 @@ public class PanelTransferHandler extends TransferHandler
         // either copy or move, depending on what was specified when
         // this instance was created
         boolean actionSupported = (COPY & support.getSourceDropActions()) == COPY;
-        if (!actionSupported) {
+        if (!actionSupported)
+        {
             return false;
         }
 
 
         // fetch the data and bail if this fails
         String data;
-        try {
-            data = (String)support.getTransferable().getTransferData(DataFlavor.stringFlavor);
+        try
+        {
+            data = (String) support.getTransferable().getTransferData(DataFlavor.stringFlavor);
             System.err.println(data);
-            if (data.equals("Add Box")) {
+            if (data.equals("Add Box"))
+            {
                 support.setDropAction(COPY);
                 return true;
             }
-        } catch (UnsupportedFlavorException e) {
+        }
+        catch (UnsupportedFlavorException e)
+        {
             return false;
-        } catch (java.io.IOException e) {
+        }
+        catch (java.io.IOException e)
+        {
             return false;
         }
 
@@ -44,19 +54,17 @@ public class PanelTransferHandler extends TransferHandler
         return false;
     }
 
-    public boolean importData(TransferHandler.TransferSupport support) {
+    public boolean importData(TransferHandler.TransferSupport support)
+    {
         // if we cannot handle the import, say so
-        if (!canImport(support)) {
+        if (!canImport(support))
+        {
             return false;
         }
 
-        JPanel panel = (JPanel)support.getComponent();
+        JPanel panel = (JPanel) support.getComponent();
         String label = getLabelInput("Enter Frame Label");
         throw new UnsupportedOperationException();
-        //BoxPanel box = new BoxPanel(panel);
-        //box.addMouseListener(new PanelMouseListener(panel.getParent(), box));
-        //panel.add(box);
-        //return true;
     }
 
     /*
@@ -70,7 +78,7 @@ public class PanelTransferHandler extends TransferHandler
     private String getLabelInput(String _message)
     {
         String label = JOptionPane.showInputDialog(null, _message);
-        if(label != null)
+        if (label != null)
         {
             return label;
         }

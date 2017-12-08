@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.dnd.*;
+import java.awt.event.MouseListener;
 
 public class TestFrame extends JFrame
 {
@@ -22,9 +23,13 @@ public class TestFrame extends JFrame
         add(heapPanel);
         add(buttonBar);
 
+        ButtonManager.getInstance().setFrame(this);
         pack();
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MouseListener ml = new TestFrameMouseListener();
+        addMouseListener(ml);
+        buttonBar.addMouseListener(ml);
     }
 
     public static void main(String[] args)
@@ -43,9 +48,8 @@ public class TestFrame extends JFrame
     private JPanel createPanel(Color _color, String _label)
     {
         JPanel createdPanel = new JPanel();
-        createdPanel.setLayout(new GridLayout(0,1));
+        createdPanel.setLayout(new GridLayout(0, 1));
         createdPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(_color, 3), _label));
-        createdPanel.addMouseListener(new PanelMouseListener(createdPanel));
         createdPanel.setTransferHandler(new PanelTransferHandler());
         return createdPanel;
     }
@@ -60,26 +64,35 @@ public class TestFrame extends JFrame
     {
         JToolBar createdToolBar = new JToolBar("Tool Bar");
         createdToolBar.setLayout(new BoxLayout(createdToolBar, BoxLayout.Y_AXIS));
+
         JLabel addBoxLabel = new JLabel("Add Box");
         JLabel addPrimitiveLabel = new JLabel("Add Primitive");
         JLabel addReferenceLabel = new JLabel("Add Reference");
-        JButton deleteComponentButton = new JButton("Delete Component");
+
+        ActionButton deleteButton = new ActionButton("Delete Component", ButtonType.DELETE);
+        deleteButton.addActionListener(new DeleteActionListener());
+        ButtonManager.getInstance().addButton(deleteButton);
+
         addBoxLabel.setTransferHandler(new TransferHandler("text"));
         addPrimitiveLabel.setTransferHandler(new TransferHandler("text"));
         addReferenceLabel.setTransferHandler(new TransferHandler("text"));
+
         addBoxLabel.setDropTarget(null);
         addPrimitiveLabel.setDropTarget(null);
         addReferenceLabel.setDropTarget(null);
-        addBoxLabel.addMouseListener(new LabelMouseListener());
-        addPrimitiveLabel.addMouseListener(new LabelMouseListener());
-        addReferenceLabel.addMouseListener(new LabelMouseListener());
+
+        addBoxLabel.addMouseListener(new DragLabelMouseListener());
+        addPrimitiveLabel.addMouseListener(new DragLabelMouseListener());
+        addReferenceLabel.addMouseListener(new DragLabelMouseListener());
+
         createdToolBar.add(addBoxLabel);
         createdToolBar.add(addPrimitiveLabel);
         createdToolBar.add(addReferenceLabel);
-        createdToolBar.add(deleteComponentButton);
+        createdToolBar.add(deleteButton);
+
+        deleteButton.setEnabled(false);
         return createdToolBar;
     }
-
 
 
 }
