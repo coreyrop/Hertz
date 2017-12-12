@@ -36,7 +36,7 @@ public class TestFrame extends JFrame
     {
         new TestFrame();
     }
-
+    
     /*
     * creates a JPanel with the provided label and color border
     *

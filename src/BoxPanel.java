@@ -5,14 +5,15 @@ import java.awt.dnd.DropTarget;
 
 public class BoxPanel extends JPanel implements Selectable
 {
+    private GridBagConstraints gbc;
     private Border actualBorder;
+    private int gridY;
     public static BoxPanel makeBox(JPanel parent)
     {
         String label = JOptionPane.showInputDialog(null, "Enter Frame Label");
         if (label != null)
         {
-            BoxPanel retVal = new BoxPanel(label, parent);
-            return retVal;
+            return new BoxPanel(label, parent);
         }
         else
         {
@@ -26,7 +27,34 @@ public class BoxPanel extends JPanel implements Selectable
         actualBorder = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), label);
         setBorder(BorderFactory.createCompoundBorder(selectionBorder, actualBorder));
 
-        setLayout(new GridLayout(0,1));
+//        setLayout(new GridLayout(0,1));
+        setLayout(new GridBagLayout());
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridwidth = 3;
+        gbc.gridheight = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+
+
+        gridY = 0;
+
+//        JButton left = new JButton("left");
+//        JButton center = new JButton("center");
+//        JButton right = new JButton("right");
+//        left.setVisible(true);
+//        center.setVisible(true);
+//        right.setVisible(true);
+//        add(left, gbc);
+//        gbc.gridx = 1;
+//        add(center, gbc);
+//        gbc.gridx = 2;
+//        add(right, gbc);
+
+        gbc.gridx = 0;
+        gridY = 1;
+        gbc.gridwidth = 3;
 
         addMouseListener(new BoxPanelMouseListener(this));
         DropTarget boxDrop = new DropTarget(this, new BoxDrop(this, parent));
@@ -59,4 +87,23 @@ public class BoxPanel extends JPanel implements Selectable
             this.setBackground(UIManager.getColor("Panel.background"));
         }
     }
+
+    public void addUnderConstariants(JLabel _label)
+    {
+        add(_label, gbc);
+        gbc.gridy++;
+    }
+
+//    public void gbcUpdateGridY()
+//    {
+//        gbc.gridy = gridY;
+//        gridY++;
+//    }
+//
+//    public GridBagConstraints getGbc()
+//    {
+//        return gbc;
+//    }
+
+
 }
