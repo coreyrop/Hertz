@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.dnd.*;
 import java.awt.event.MouseListener;
@@ -48,9 +49,20 @@ public class TestFrame extends JFrame
     private JPanel createPanel(Color _color, String _label)
     {
         JPanel createdPanel = new JPanel();
-        createdPanel.setLayout(new GridLayout(0, 1));
+        createdPanel.setLayout(new GridBagLayout());
         createdPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(_color, 3), _label));
         createdPanel.setTransferHandler(new PanelTransferHandler());
+        JPanel filler = new JPanel();
+        Color boring = UIManager.getColor("Panel.background");
+        Color boringer = new Color(boring.getRed(), boring.getGreen(), boring.getBlue(), 0);
+        filler.setBackground(boringer);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        createdPanel.add(filler, gbc);
         return createdPanel;
     }
 

@@ -5,9 +5,7 @@ import java.awt.dnd.DropTarget;
 
 public class BoxPanel extends JPanel implements Selectable
 {
-    private GridBagConstraints gbc;
     private Border actualBorder;
-    private int gridY;
     public static BoxPanel makeBox(JPanel parent)
     {
         String label = JOptionPane.showInputDialog(null, "Enter Frame Label");
@@ -29,16 +27,8 @@ public class BoxPanel extends JPanel implements Selectable
 
 //        setLayout(new GridLayout(0,1));
         setLayout(new GridBagLayout());
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridwidth = 3;
-        gbc.gridheight = 1;
-        gbc.anchor = GridBagConstraints.CENTER;
-
-
-        gridY = 0;
+        setAlignmentY(0);
+        setAlignmentX(1);
 
 //        JButton left = new JButton("left");
 //        JButton center = new JButton("center");
@@ -51,10 +41,6 @@ public class BoxPanel extends JPanel implements Selectable
 //        add(center, gbc);
 //        gbc.gridx = 2;
 //        add(right, gbc);
-
-        gbc.gridx = 0;
-        gridY = 1;
-        gbc.gridwidth = 3;
 
         addMouseListener(new BoxPanelMouseListener(this));
         DropTarget boxDrop = new DropTarget(this, new BoxDrop(this, parent));
@@ -88,11 +74,20 @@ public class BoxPanel extends JPanel implements Selectable
         }
     }
 
-    public void addUnderConstariants(JLabel _label)
+    @Override
+    public Component add(Component comp)
     {
-        add(_label, gbc);
-        gbc.gridy++;
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.anchor = GridBagConstraints.NORTHWEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        super.add(comp, gbc);
+        return comp;
     }
+
 
 //    public void gbcUpdateGridY()
 //    {

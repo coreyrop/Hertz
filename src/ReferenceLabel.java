@@ -23,9 +23,10 @@ public class ReferenceLabel extends JLabel implements Selectable
     {
         setText(_reference);
 
-        Border selectionBorder = BorderFactory.createLineBorder(UIManager.getColor("Panel.background"), 2);
-        actualBorder = BorderFactory.createEtchedBorder();
-        setBorder(BorderFactory.createCompoundBorder(selectionBorder, actualBorder));
+        Color boring = UIManager.getColor("Panel.background");
+        Color boringer = new Color(boring.getRed(), boring.getGreen(), boring.getBlue(), 0);
+        Border selectionBorder = BorderFactory.createLineBorder(boringer, 2);
+        setBorder(selectionBorder);
 
         addMouseListener(new PrimitiveandReferenceMouseListener(ButtonManager.ComponentType.REFERENCE));
     }
@@ -37,12 +38,14 @@ public class ReferenceLabel extends JLabel implements Selectable
         if (isSelected)
         {
             Border selectionBorder = BorderFactory.createLineBorder(UIManager.getColor(Color.GRAY), 2);
-            setBorder(BorderFactory.createCompoundBorder(selectionBorder, actualBorder));
+            setBorder(selectionBorder);
         }
         else
         {
-            Border selectionBorder = BorderFactory.createLineBorder(UIManager.getColor("Panel.background"), 2);
-            setBorder(BorderFactory.createCompoundBorder(selectionBorder, actualBorder));
+            Color boring = UIManager.getColor("Panel.background");
+            Color boringer = new Color(boring.getRed(), boring.getGreen(), boring.getBlue(), 0);
+            Border selectionBorder = BorderFactory.createLineBorder(boringer, 2);
+            setBorder(selectionBorder);
         }
     }
 

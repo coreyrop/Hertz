@@ -34,7 +34,6 @@ public class PanelTransferHandler extends TransferHandler
         try
         {
             data = (String) support.getTransferable().getTransferData(DataFlavor.stringFlavor);
-            System.err.println(data);
             if (data.equals("Add Box"))
             {
                 support.setDropAction(COPY);

@@ -67,13 +67,13 @@ public class BoxDrop implements DropTargetListener
             {
 //                box.gbcUpdateGridY();
 //                box.add(PrimitiveLabel.makePrimitiveLabel(), box.getGbc());
-                box.addUnderConstariants(PrimitiveLabel.makePrimitiveLabel());
+                box.add(PrimitiveLabel.makePrimitiveLabel());
             }
             else
             {
 //                box.gbcUpdateGridY();
 //                box.add(ReferenceLabel.makeReferenceLabel(), box.getGbc());
-                box.addUnderConstariants(ReferenceLabel.makeReferenceLabel());
+                box.add(ReferenceLabel.makeReferenceLabel());
             }
             box.revalidate();
         }

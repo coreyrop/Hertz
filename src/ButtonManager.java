@@ -42,6 +42,7 @@ public class ButtonManager
             component.setSelected(false);
         }
         component = null;
+        disableAllButtons();
     }
 
     private void enableButtons(ComponentType _component)
