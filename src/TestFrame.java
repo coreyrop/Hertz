@@ -9,8 +9,10 @@ public class TestFrame extends JFrame
     public TestFrame()
     {
         super("TestFrame");
-        JPanel heapPanel = createPanel(Color.BLUE, "heap");
-        JPanel stackPanel = createPanel(Color.RED, "stack");
+//        JPanel heapPanel = createPanel(Color.BLUE, "heap");
+//        JPanel stackPanel = createPanel(Color.RED, "stack");
+        JPanel stackPanel = new StackPanel();
+        JPanel heapPanel = new HeapPanel();
         JToolBar buttonBar = createToolBar();
 
         getContentPane().setLayout(new GridLayout());

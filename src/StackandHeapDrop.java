@@ -62,20 +62,21 @@ public class StackandHeapDrop implements DropTargetListener
                 BoxPanel newPanel = BoxPanel.makeBox(panel);
                 if (newPanel != null)
                 {
-                    GridBagConstraints gbc = new GridBagConstraints();
-                    gbc.gridx = 0;
-                    gbc.gridy = panel.getComponentCount()-1;
-                    gbc.anchor = GridBagConstraints.NORTHWEST;
-                    gbc.fill = GridBagConstraints.HORIZONTAL;
-                    gbc.weightx = 1;
-                    gbc.weighty = 0;
-                    Component comp = panel.getComponent(0);
-                    GridBagLayout gbl = (GridBagLayout)panel.getLayout();
-                    GridBagConstraints bigBrother = gbl.getConstraints(comp);
-                    bigBrother.gridy = gbc.gridy+1;
-                    gbl.setConstraints(comp, bigBrother);
-                    panel.add(newPanel, gbc);
-                    panel.revalidate();
+                    panel.add(newPanel);
+//                    GridBagConstraints gbc = new GridBagConstraints();
+//                    gbc.gridx = 0;
+//                    gbc.gridy = panel.getComponentCount()-1;
+//                    gbc.anchor = GridBagConstraints.NORTHWEST;
+//                    gbc.fill = GridBagConstraints.HORIZONTAL;
+//                    gbc.weightx = 1;
+//                    gbc.weighty = 0;
+//                    Component comp = panel.getComponent(0);
+//                    GridBagLayout gbl = (GridBagLayout)panel.getLayout();
+//                    GridBagConstraints bigBrother = gbl.getConstraints(comp);
+//                    bigBrother.gridy = gbc.gridy+1;
+//                    gbl.setConstraints(comp, bigBrother);
+//                    panel.add(newPanel, gbc);
+//                    panel.revalidate();
                 }
             }
             else if (data.getTransferData(data.getTransferDataFlavors()[0]).equals(ADD_PRIMITIVE))
