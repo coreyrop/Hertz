@@ -11,14 +11,17 @@ public class BoxDrop implements DropTargetListener
 {
     private static final String ADD_BOX = "Add Box";
     private static final String ADD_PRIMITIVE = "Add Primitive";
+    private static final String ADD_REFERENCE = "Add Reference";
 
     private BoxPanel box;
+    private BoxPanel.ParentType parentType;
     private JPanel containingPanel;
     private Color defaultColor;
 
     public BoxDrop(BoxPanel _box, JPanel parent)
     {
         box = _box;
+        parentType = box.getType();
         containingPanel = parent;
         defaultColor = box.getBackground();
     }
@@ -32,9 +35,20 @@ public class BoxDrop implements DropTargetListener
         Transferable data = dtde.getTransferable();
         try
         {
-            if (data.getTransferData(data.getTransferDataFlavors()[0]) != ADD_BOX)
+            if (data.getTransferData(data.getTransferDataFlavors()[0]) == ADD_PRIMITIVE)
             {
                 box.setBackground(Color.GREEN);
+            }
+            else if (data.getTransferData(data.getTransferDataFlavors()[0]) == ADD_REFERENCE)
+            {
+                if (parentType == BoxPanel.ParentType.STACK)
+                {
+                    box.setBackground(Color.GREEN);
+                }
+                else
+                {
+                    dtde.rejectDrag();
+                }
             }
             else
             {
@@ -65,15 +79,14 @@ public class BoxDrop implements DropTargetListener
         {
             if (data.getTransferData(data.getTransferDataFlavors()[0]).equals(ADD_PRIMITIVE))
             {
-//                box.gbcUpdateGridY();
-//                box.add(PrimitiveLabel.makePrimitiveLabel(), box.getGbc());
                 box.add(PrimitiveLabel.makePrimitiveLabel());
             }
             else
             {
-//                box.gbcUpdateGridY();
-//                box.add(ReferenceLabel.makeReferenceLabel(), box.getGbc());
-                box.add(ReferenceLabel.makeReferenceLabel());
+                if (parentType == BoxPanel.ParentType.STACK)
+                {
+                    box.add(ReferenceLabel.makeReferenceLabel());
+                }
             }
             box.revalidate();
         }
