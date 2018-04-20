@@ -68,7 +68,7 @@ public class Listener extends MouseAdapter
                         graph.getModel().beginUpdate();
                         try
                         {
-                            parentStruct.addBoxComponent(graph, cell);
+                            parentStruct.promptAddComponent(graph, cell);
                         }
                         finally
                         {

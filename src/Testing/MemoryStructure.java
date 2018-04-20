@@ -15,35 +15,51 @@ public class MemoryStructure
     private mxCell structureCell;
     private double structureCell_x, structureCell_y, structureCell_width, structureCell_height, nextBoxX, nextBoxY, labelHeight;
     private dataStoreStyle storeStyle;
-    private StructureBoxManager structureBoxManager;
     private Frame frame;
+    private HashMap<mxCell, ArrayList<mxCell>> boxes;
 
     private static int ID_COUNT;
 
-    static {
+    static
+    {
         ID_COUNT = 0;
     }
 
-    public static enum dataStoreStyle
+    public static void setIdCount(int _count)
+    {
+        ID_COUNT = _count;
+    }
+
+    public enum dataStoreStyle
     {
         STACK, HEAP
     }
 
-    public static enum variableStyle
+    public enum variableStyle
     {
-        PRIMITIVE("Primitive"), REFERENCE("Reference");
-        private String prettyName;
+        REFERENCE("Reference"), PRIMITIVE("Primitive");
+        private String displayName;
         private int idCount;
-        private variableStyle(String pn) {
-            prettyName = pn;
+        variableStyle(String _displayName)
+        {
+            displayName = _displayName;
         }
-        public String toString() {
-            return prettyName;
+
+        public String toString()
+        {
+            return displayName;
         }
-        public String generateNewId() {
+
+        public String generateNewId()
+        {
             int idNum = idCount;
             idCount += 1;
-            return prettyName + idNum;
+            return displayName + idNum;
+        }
+
+        public void setIdCount(int _latestIDCount)
+        {
+            idCount = _latestIDCount;
         }
     }
 
@@ -58,7 +74,7 @@ public class MemoryStructure
         nextBoxX = 0;
         nextBoxY = Styles.getDefaultRect().getHeight() + (mxConstants.LABEL_INSET * 2);
         labelHeight = Styles.getDefaultRect().getHeight() + (mxConstants.LABEL_INSET * 2);
-        structureBoxManager = new StructureBoxManager();
+        boxes = new HashMap<>();
 
         if (storeStyle == dataStoreStyle.STACK)
         {
@@ -76,15 +92,15 @@ public class MemoryStructure
     {
         if (storeStyle == dataStoreStyle.STACK)
         {
-            return addBoxStack(graph, _cell, _x, _y, storeStyle.name());
+            return addBoxStackStyle(graph, _cell, _x, _y, storeStyle.name());
         }
         else
         {
-            return addBoxHeap(graph, _cell, _x, _y, storeStyle.name());
+            return addBoxHeapStyle(graph, _cell, _x, _y, storeStyle.name());
         }
     }
 
-    public void addBoxComponent(mxGraph _graph, Object _box)
+    public void promptAddComponent(mxGraph _graph, Object _box)
     {
         if (boxInStructure(_box))
         {
@@ -109,13 +125,23 @@ public class MemoryStructure
                         style = Styles.getPrimitiveStyle();
                         idString = variableStyle.PRIMITIVE.generateNewId();
                     }
-                    structureBoxManager.addComponent(_graph, _box, label, style, idString);
+                    addComponent(_graph, _box, label, style, idString);
                 }
             }
         }
     }
 
-    private boolean addBoxStack(mxGraph graph, Object _cell, double _x, double _y, String idLabel)
+    public void addComponent(mxGraph _graph, Object _box, String _label, String _style, String type)
+    {
+        mxRectangle rect = mxUtils.getLabelSize(_label, Styles.getPlaceHolder(), false, mxConstants.LINE_HEIGHT);
+        double textWidth = (rect.getWidth() + 5);
+        ArrayList<mxCell> components = boxes.get(_box);
+        double componentHeight = rect.getHeight();
+        Object newComponent = _graph.insertVertex(_box, type, _label, 5, (components.size() * componentHeight) + 5, textWidth, componentHeight, _style);
+        components.add((mxCell)newComponent);
+    }
+
+    private boolean addBoxStackStyle(mxGraph graph, Object _cell, double _x, double _y, String idLabel)
     {
         if (_cell != structureCell)
         {
@@ -130,13 +156,14 @@ public class MemoryStructure
             nextBoxY += (structureCell_height / 10) + labelHeight;
             nextBoxX = 0; // never change
             ID_COUNT += 1;
-            structureBoxManager.addBox(newBox);
+            ArrayList<mxCell> components = new ArrayList<>();
+            boxes.put(newBox, components);
             return true;
         }
         return false;
     }
 
-    private boolean addBoxHeap(mxGraph graph, Object _cell, double _x, double _y, String idLabel)
+    private boolean addBoxHeapStyle(mxGraph graph, Object _cell, double _x, double _y, String idLabel)
     {
         if (_cell != structureCell)
         {
@@ -151,7 +178,8 @@ public class MemoryStructure
             mxCell newBox = (mxCell) graph.insertVertex(structureCell, idLabel+Integer.toString(ID_COUNT), label, newBoxX, _y, structureCell_width / 10, structureCell_height / 10, Styles.getHeapBoxStyle());
             newBox.setSource(null);
             ID_COUNT += 1;
-            structureBoxManager.addBox(newBox);
+            ArrayList<mxCell> components = new ArrayList<>();
+            boxes.put(newBox, components);
             return true;
         }
         return false;
@@ -159,7 +187,7 @@ public class MemoryStructure
 
     public boolean boxInStructure(Object _box)
     {
-        return structureBoxManager.hasBox(_box);
+        return _box != null && boxes.containsKey(_box);
     }
 
     public mxCell getMemoryStructureCell()
@@ -169,74 +197,28 @@ public class MemoryStructure
 
     public Object getMemoryStructureCellObject()
     {
-        return (Object)structureCell;
+        return structureCell;
     }
 
     public HashMap<mxCell, ArrayList<mxCell>> getBoxes()
     {
-        return structureBoxManager.getBoxes();
+        return boxes;
     }
 
     public void setBoxes(HashMap<mxCell, ArrayList<mxCell>> _boxes)
     {
-        structureBoxManager.setBoxes(_boxes);
+        boxes = _boxes;
     }
 
     public void clearBoxes()
     {
-        structureBoxManager.clearBoxes();
+        mxCell[] instanceBoxes = boxes.keySet().toArray(new mxCell[boxes.size()]);
+        frame.getGraph().removeCells(instanceBoxes);
+        boxes = new HashMap<>();
     }
 
-    private class StructureBoxManager
+    public void setNextBoxY(double _greatestBoxY)
     {
-        private HashMap<mxCell, ArrayList<mxCell>> boxes;
-
-        private StructureBoxManager()
-        {
-            boxes = new HashMap<mxCell, ArrayList<mxCell>>();
-        }
-
-        public void addComponent(mxGraph _graph, Object _box, String _label, String _style, String type)
-        {
-            mxRectangle rect = mxUtils.getLabelSize(_label, Styles.getPlaceHolder(), false, mxConstants.LINE_HEIGHT);
-            double textWidth = (rect.getWidth() + 5);
-            ArrayList<mxCell> components = boxes.get(_box);
-            double componentHeight = rect.getHeight();
-            Object newComponent = _graph.insertVertex(_box, type, _label, 5, (components.size() * componentHeight) + 5, textWidth, componentHeight, _style);
-            components.add((mxCell)newComponent);
-        }
-
-        public void addBox(mxCell _stackBox)
-        {
-            ArrayList<mxCell> components = new ArrayList<mxCell>();
-            boxes.put(_stackBox, components);
-        }
-
-        public void removeBox(Object _stackBox)
-        {
-            boxes.remove(_stackBox);
-        }
-
-        public boolean hasBox(Object _box)
-        {
-            return _box != null && boxes.containsKey(_box);
-        }
-
-        public HashMap<mxCell, ArrayList<mxCell>> getBoxes()
-        {
-            return boxes;
-        }
-
-        public void setBoxes(HashMap<mxCell, ArrayList<mxCell>> _boxes)
-        {
-            boxes = _boxes;
-        }
-
-        public void clearBoxes()
-        {
-            mxCell[] instanceBoxes = boxes.keySet().toArray(new mxCell[boxes.size()]);
-            frame.getGraph().removeCells(instanceBoxes);
-        }
-
+        nextBoxY = _greatestBoxY + (structureCell_height / 10) + labelHeight;
     }
 }
