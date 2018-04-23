@@ -1,22 +1,13 @@
 package Testing;
 
+import com.mxgraph.model.mxICell;
 import com.mxgraph.swing.handler.mxGraphHandler;
-import com.mxgraph.swing.handler.mxGraphTransferHandler;
 import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.swing.util.mxGraphTransferable;
-import com.mxgraph.view.mxGraph;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DropTargetDragEvent;
 import java.awt.dnd.DropTargetDropEvent;
 import java.awt.event.MouseEvent;
-import java.util.logging.Level;
 
-import com.mxgraph.swing.mxGraphComponent;
-import com.mxgraph.model.mxICell;
-import com.mxgraph.model.mxCell;
 
 public class mxGraphHandlerSubClass extends mxGraphHandler
 {
@@ -30,6 +21,9 @@ public class mxGraphHandlerSubClass extends mxGraphHandler
         super(graphComponent);
     }
 
+    /*
+        Overridden to prevent the moving of cells outside of their parents
+     */
     @Override
     public void drop(DropTargetDropEvent e)
     {
@@ -49,6 +43,9 @@ public class mxGraphHandlerSubClass extends mxGraphHandler
         }
     }
 
+    /*
+        Get the cell that is being dragged and save it as a field
+     */
     @Override
     public void dragEnter(DropTargetDragEvent e)
     {

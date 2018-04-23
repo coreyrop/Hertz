@@ -5,9 +5,7 @@ import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxEdgeStyle;
 
 import javax.swing.*;
-
 import java.awt.*;
-
 import java.util.Map;
 
 public class Frame extends JFrame
@@ -16,6 +14,11 @@ public class Frame extends JFrame
     private MemoryStructure heap;
     private mxGraphSubClass graph;
 
+    /*
+        Frame class constructor
+        Creates menu bar and options
+        calls makeGraph()
+     */
     public Frame()
     {
         super("Memory");
@@ -45,9 +48,15 @@ public class Frame extends JFrame
         Frame frame = new Frame();
     }
 
+    /*
+        Initializes JGraphX
+        creates graph and sets styles
+        adds Stack and Heap to the graph
+        @ param Dimension _screenSize: the dimension of the display the program is run on
+     */
     private void makeGraph(Dimension _screenSize)
     {
-        graph = new mxGraphSubClass(this);
+        graph = new mxGraphSubClass();
         Object parent = graph.getDefaultParent();
         graph.setAllowDanglingEdges(false);
         Map<String, Object> edgeStyle = graph.getStylesheet().getDefaultEdgeStyle();
@@ -68,17 +77,21 @@ public class Frame extends JFrame
         spl.setVerticalScrollBarPolicy(ScrollPaneLayout.VERTICAL_SCROLLBAR_AS_NEEDED);
         graphComponent.setLayout(spl);
         getContentPane().add(graphComponent);
-        graphComponent.getGraphControl().addMouseListener(new Listener(this, graph, graphComponent));
+        graphComponent.getGraphControl().addMouseListener(new Listener(this, graphComponent));
         graphComponent.getGraphHandler().setRemoveCellsFromParent(false);
     }
 
-    public MemoryStructure convertCell(Object cell)
+    /*
+        @ param Object _cell: a cell in graph
+        @ return Stack or Heap, else null if _cell is neither
+     */
+    public MemoryStructure convertCell(Object _cell)
     {
-        if (cell == heap.getMemoryStructureCellObject())
+        if (_cell == heap.getMemoryStructureCell())
         {
             return heap;
         }
-        else if (cell == stack.getMemoryStructureCellObject())
+        else if (_cell == stack.getMemoryStructureCell())
         {
             return stack;
         }

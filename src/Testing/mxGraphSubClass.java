@@ -1,35 +1,42 @@
 package Testing;
-import com.mxgraph.view.mxGraph;
-import com.mxgraph.model.mxICell;
+
 import com.mxgraph.model.mxCell;
+import com.mxgraph.view.mxGraph;
 
 public class mxGraphSubClass extends mxGraph
 {
-    private Frame frame;
+    /*
+        Checks if the cell is a valid source for an edge.
+        Is only true if the source cell is a reference component and does not already have an outgoing edge
+        @ param Object _cell: the cell that is being considered as a potential source
 
-    public mxGraphSubClass(Frame _frame)
-    {
-        frame = _frame;
-    }
-
+        @ return boolean: true if the cell is a valid source, false otherwise
+     */
     @Override
-    public boolean isValidSource(Object cell)
+    public boolean isValidSource(Object _cell)
     {
-        if (cell != null)
+        if (_cell != null)
         {
-            mxCell mxcell = (mxCell) cell;
+            mxCell mxcell = (mxCell) _cell;
             String cellId = mxcell.getId();
-            return super.isValidSource(cell) && cellId.startsWith(MemoryStructure.variableStyle.REFERENCE.toString()) && mxcell.getEdgeCount() <= 1;
+            return super.isValidSource(_cell) && cellId.startsWith(MemoryStructure.variableStyle.REFERENCE.toString()) && mxcell.getEdgeCount() <= 1;
         }
         return false;
     }
 
+    /*
+        Checks if the cell is a valid target for an edge
+        Is only true if the cell is a box in the Heap
+        @ param Object _cell: the cell that is being considered as a potential target
+
+        @ return boolean: true if the cell is a valid target, false otherwise
+     */
     @Override
-    public boolean isValidTarget(Object cell)
+    public boolean isValidTarget(Object _cell)
     {
-        mxCell thisCell = (mxCell) cell;
+        mxCell thisCell = (mxCell) _cell;
         String cellId = thisCell.getId();
-        return super.isValidSource(cell) && cellId.startsWith(MemoryStructure.dataStoreStyle.HEAP.name());
+        return super.isValidSource(_cell) && cellId.startsWith(MemoryStructure.dataStoreStyle.HEAP.name());
     }
 
 }

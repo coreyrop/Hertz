@@ -14,6 +14,9 @@ public class mxGraphComponentSubClass extends mxGraphComponent
         super(graph);
     }
 
+    /*
+        Implemented to allow use of the mxGraphHandlerSubClass
+     */
     @Override
     protected mxGraphHandler createGraphHandler()
     {
