@@ -17,13 +17,10 @@
 *.zip
 *.tar.gz
 *.rar
+*.xml
+*.txt
+*.iml
 
-workspace.xml
-build.xml
-license.txt
-pom.xml
-README.md
-Test5.iml
 
 # MacOS Files
 *.DS_Store 

@@ -1,4 +1,4 @@
-package Testing;
+package MemoryTraceDrawer;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.util.mxConstants;

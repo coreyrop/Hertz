@@ -2,17 +2,275 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15e2fa04-457f-4628-b974-0e4e16020df8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/analysis/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/canvas/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/io/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/layout/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/model/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/reader/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_de.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_es.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_fr.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_it.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_ja.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_nl.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_pt.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_ru.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/resources/graph_zh.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/handler/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/images/collapsed.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/images/expanded.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/images/rotate.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/images/warning.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/util/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/swing/view/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/util/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Test5/com/mxgraph/view/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/StructuralException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxAnalysisGraph.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxConstantCostFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxDistanceCostFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxFibonacciHeap.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxGraphAnalysis.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxGraphGenerator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxGraphProperties.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxGraphStructure.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxICostFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxTraversal.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/mxUnionFind.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/analysis/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxBasicCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxGraphics2DCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxGraphicsCanvas2D.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxHtmlCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxICanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxICanvas2D.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxImageCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxSvgCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/mxVmlCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/canvas/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/costfunction/mxConstCostFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/costfunction/mxCostFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/costfunction/mxDoubleValCostFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/generatorfunction/mxGeneratorConstFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/generatorfunction/mxGeneratorFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/generatorfunction/mxGeneratorRandomFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/generatorfunction/mxGeneratorRandomIntFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxCellCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxChildChangeCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxCodecRegistry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxGdCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxGenericChangeCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxModelCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxObjectCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxRootChangeCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxStylesheetCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/mxTerminalChangeCodec.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/io/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/model/mxGraphAbstractHierarchyCell.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/model/mxGraphHierarchyEdge.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/model/mxGraphHierarchyModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/model/mxGraphHierarchyNode.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/model/mxGraphHierarchyRank.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/mxHierarchicalLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/stage/mxCoordinateAssignment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/stage/mxHierarchicalLayoutStage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/stage/mxMedianHybridCrossingReduction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/hierarchical/stage/mxMinimumCycleRemover.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxCircleLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxCompactTreeLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxEdgeLabelLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxFastOrganicLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxGraphLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxIGraphLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxOrganicLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxParallelEdgeLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxPartitionLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/mxStackLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/orthogonal/model/mxOrthogonalModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/orthogonal/model/mxPointPair.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/orthogonal/model/mxPointSequence.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/orthogonal/model/mxSegment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/orthogonal/mxOrthogonalLayout.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/layout/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/mxCell.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/mxCellPath.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/mxGeometry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/mxGraphModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/mxICell.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/mxIGraphModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/model/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/reader/mxDomOutputParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/reader/mxGraphViewImageReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/reader/mxGraphViewReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/reader/mxSaxOutputHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/reader/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_de.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_es.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_fr.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_it.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_ja.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_nl.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_pt.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_ru.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/resources/graph_zh.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxActorShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxArrowShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxBasicShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxCloudShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxConnectorShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxCurveLabelShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxCurveShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxCylinderShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxDefaultTextShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxDoubleEllipseShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxDoubleRectangleShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxEllipseShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxHexagonShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxHtmlTextShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxIMarker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxIShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxITextShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxImageShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxLabelShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxLineShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxMarkerRegistry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxRectangleShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxRhombusShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxStencil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxStencilRegistry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxStencilShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxSwimlaneShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/shape/mxTriangleShape.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxCellHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxCellMarker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxCellTracker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxConnectPreview.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxConnectionHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxEdgeHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxElbowEdgeHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxGraphHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxGraphTransferHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxInsertHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxKeyboardHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxMovePreview.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxPanningHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxRotationHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxRubberband.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxSelectionCellsHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/mxVertexHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/handler/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/images/collapsed.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/images/expanded.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/images/rotate.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/images/warning.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/mxGraphComponent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/mxGraphOutline.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxAnimation.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxCellOverlay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxGraphActions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxGraphTransferable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxICellOverlay.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxMorphing.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxMouseAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/mxSwingConstants.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/util/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/view/mxCellEditor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/view/mxCellStatePreview.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/view/mxICellEditor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/view/mxInteractiveCanvas.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/swing/view/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxBase64.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxCellRenderer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxConstants.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxCurve.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxDomUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxEvent.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxEventObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxEventSource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxHtmlColor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxImage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxImageBundle.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxLightweightLabel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxLine.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxPoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxRectangle.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxResources.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxSpline.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxSpline1D.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxStyleUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxUndoManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxUndoableEdit.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/mxXmlUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/package.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/png/mxPngEncodeParam.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/png/mxPngImageEncoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/png/mxPngSuggestedPaletteEntry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/png/mxPngTextDecoder.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/AWTPathProducer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/AWTPolygonProducer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/AWTPolylineProducer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/AbstractParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/CSSConstants.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/DefaultErrorHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/ErrorHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/ExtendedGeneralPath.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/ExtendedPathIterator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/NormalizingReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/NumberParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/ParseException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/Parser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/PathHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/PathParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/PointsHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/PointsParser.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/ShapeProducer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/util/svg/StringNormalizingReader.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxCellState.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxConnectionConstraint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxEdgeStyle.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxGraph.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxGraphSelectionModel.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxGraphView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxLayoutManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxMultiplicity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxPerimeter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxStyleRegistry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxStylesheet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxSwimlaneManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/mxTemporaryCellStates.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/mxgraph/view/package.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Test5.iml" afterPath="$PROJECT_DIR$/MemoryTraceDrawingApplication.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/CellPopupMenu.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/CellPopupMenu.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/Frame.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/Frame.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/Listener.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/Listener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/LoadActionListener.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/LoadActionListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/MemoryStructure.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/MemoryStructure.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/SaveActionListener.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/SaveProjectActionListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/Styles.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/Styles.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/mxGraphComponentSubClass.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/mxGraphComponentSubClass.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/mxGraphHandlerSubClass.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/mxGraphHandlerSubClass.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing/mxGraphSubClass.java" afterPath="$PROJECT_DIR$/src/MemoryTraceDrawer/mxGraphSubClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/CellPopupMenu.java" afterPath="$PROJECT_DIR$/src/Testing/CellPopupMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/Frame.java" afterPath="$PROJECT_DIR$/src/Testing/Frame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/Listener.java" afterPath="$PROJECT_DIR$/src/Testing/Listener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/LoadActionListener.java" afterPath="$PROJECT_DIR$/src/Testing/LoadActionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/MemoryStructure.java" afterPath="$PROJECT_DIR$/src/Testing/MemoryStructure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/SaveActionListener.java" afterPath="$PROJECT_DIR$/src/Testing/SaveActionListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/Styles.java" afterPath="$PROJECT_DIR$/src/Testing/Styles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/mxGraphComponentSubClass.java" afterPath="$PROJECT_DIR$/src/Testing/mxGraphComponentSubClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/mxGraphHandlerSubClass.java" afterPath="$PROJECT_DIR$/src/Testing/mxGraphHandlerSubClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Testing/mxGraphSubClass.java" afterPath="$PROJECT_DIR$/src/Testing/mxGraphSubClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/CellPopupMenu.java" afterPath="$PROJECT_DIR$/target/classes/Testing/CellPopupMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/Frame.java" afterPath="$PROJECT_DIR$/target/classes/Testing/Frame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/Listener.java" afterPath="$PROJECT_DIR$/target/classes/Testing/Listener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/LoadActionListener.java" afterPath="$PROJECT_DIR$/target/classes/Testing/LoadActionListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/MemoryStructure.java" afterPath="$PROJECT_DIR$/target/classes/Testing/MemoryStructure.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/SaveActionListener.java" afterPath="$PROJECT_DIR$/target/classes/Testing/SaveActionListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/Styles.java" afterPath="$PROJECT_DIR$/target/classes/Testing/Styles.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/mxGraphComponentSubClass.java" afterPath="$PROJECT_DIR$/target/classes/Testing/mxGraphComponentSubClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/mxGraphHandlerSubClass.java" afterPath="$PROJECT_DIR$/target/classes/Testing/mxGraphHandlerSubClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Testing/mxGraphSubClass.java" afterPath="$PROJECT_DIR$/target/classes/Testing/mxGraphSubClass.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,12 +282,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoadActionListener.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Testing/LoadActionListener.java">
+      <file leaf-file-name="Frame.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/Frame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="15">
+              <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -197,8 +457,10 @@
         <option value="$PROJECT_DIR$/src/Testing/mxGraphComponentSubClass.java" />
         <option value="$PROJECT_DIR$/src/Testing/MemoryStructure.java" />
         <option value="$PROJECT_DIR$/src/Testing/CellPopupMenu.java" />
-        <option value="$PROJECT_DIR$/src/Testing/Frame.java" />
         <option value="$PROJECT_DIR$/src/Testing/LoadActionListener.java" />
+        <option value="$PROJECT_DIR$/src/Testing/Frame.java" />
+        <option value="$PROJECT_DIR$/src/Testing/SaveImageActionListener.java" />
+        <option value="$PROJECT_DIR$/src/MemoryTraceDrawer/Frame.java" />
       </list>
     </option>
   </component>
@@ -248,10 +510,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,16 +526,20 @@
               <item name="Hertz" type="b2602c69:ProjectViewProjectNode" />
               <item name="Hertz" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Testing" type="462c0819:PsiDirectoryNode" />
+              <item name="MemoryTraceDrawer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -301,20 +563,20 @@
     <configuration name="Frame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="Testing.*" />
+          <option name="PATTERN" value="MemoryTraceDrawer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="Testing.Frame" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="MemoryTraceDrawer.Frame" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Test5" />
+      <module name="MemoryTraceDrawingApplication" />
       <envs />
     </configuration>
     <configuration name="TestFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -371,6 +633,18 @@
       </option>
       <envs />
       <patterns />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Test5" />
+      <envs />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
@@ -458,6 +732,10 @@
       <workItem from="1524505015686" duration="4248000" />
       <workItem from="1524513906888" duration="2697000" />
       <workItem from="1524523475683" duration="3622000" />
+      <workItem from="1524529568736" duration="859000" />
+      <workItem from="1524530433553" duration="95000" />
+      <workItem from="1524530647720" duration="222000" />
+      <workItem from="1524530907319" duration="284000" />
     </task>
     <task id="LOCAL-00001" summary="Testing a first real commit.">
       <created>1512753876203</created>
@@ -484,7 +762,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57687000" />
+    <option name="totallyTimeSpent" value="59147000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -497,11 +775,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -512,9 +789,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18803419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1916972" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -526,6 +802,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3285568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -613,8 +890,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/PrimitiveLabel.java" />
-    <entry file="file://$PROJECT_DIR$/src/ReferenceLabel.java" />
     <entry file="file://$PROJECT_DIR$/src/PrimitiveLabel.java" />
     <entry file="file://$PROJECT_DIR$/src/ReferenceLabel.java" />
     <entry file="file://$PROJECT_DIR$/src/TestFrame.java" />
@@ -715,10 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="186" column="28" lean-forward="false" selection-start-line="186" selection-start-column="28" selection-end-line="186" selection-end-column="28" />
-          <folding>
-            <element signature="e#6064#6065#0" expanded="false" />
-            <element signature="e#6112#6113#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,107 +1004,127 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="637" column="11" lean-forward="false" selection-start-line="637" selection-start-column="11" selection-end-line="637" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/Styles.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/Styles.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/SaveActionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="79" column="13" lean-forward="true" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/mxGraphSubClass.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/mxGraphSubClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/mxGraphHandlerSubClass.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/mxGraphHandlerSubClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="774">
           <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/mxGraphComponentSubClass.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/mxGraphComponentSubClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/MemoryStructure.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/MemoryStructure.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2895">
           <caret line="205" column="10" lean-forward="false" selection-start-line="205" selection-start-column="10" selection-end-line="205" selection-end-column="10" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11232#11233#0" expanded="true" />
-            <element signature="e#11267#11268#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#11242#11243#0" expanded="false" />
+            <element signature="e#11277#11278#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/CellPopupMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/CellPopupMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/Frame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="65" lean-forward="true" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/Listener.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/Listener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-531">
           <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testing/LoadActionListener.java">
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/LoadActionListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        <state relative-caret-position="15">
+          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/src.zip!/java.base/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="554" column="18" lean-forward="false" selection-start-line="554" selection-start-column="18" selection-end-line="554" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/SaveProjectActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-453">
+          <caret line="72" column="17" lean-forward="false" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/SaveImageActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#607#608#0" expanded="false" />
+            <element signature="e#637#638#0" expanded="false" />
+            <element signature="e#705#706#0" expanded="false" />
+            <element signature="e#738#739#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MemoryTraceDrawer/Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

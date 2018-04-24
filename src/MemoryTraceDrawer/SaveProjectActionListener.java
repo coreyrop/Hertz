@@ -15,15 +15,23 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class SaveActionListener implements ActionListener
+public class SaveProjectActionListener implements ActionListener
 {
     private Frame frame;
 
-    public SaveActionListener(Frame _frame)
+    /*
+        SaveProjectActionListener class constructor
+        @ param Frame _frame: the Frame instance associated with this SaveProjectActionListener
+     */
+    public SaveProjectActionListener(Frame _frame)
     {
         frame = _frame;
     }
 
+    /*
+        Gets the HashMaps of boxes from the Stack and Heap
+        Passes them as an argument to save
+     */
     public void actionPerformed(ActionEvent e)
     {
         ArrayList<MemoryStructure> elders = new ArrayList<MemoryStructure>();
@@ -32,6 +40,11 @@ public class SaveActionListener implements ActionListener
         save(elders);
     }
 
+    /*
+        Prompts the user to select what to save the file as
+        Calls printAll with writer and _eldestStructures as arguments
+        @ param Collection<MemoryStructure> _eldestStructures: a collection of all the HashMaps for the Stack and Heap
+     */
     private void save(Collection<MemoryStructure> _eldestStructures)
     {
         JFileChooser fileChooser = new JFileChooser();
@@ -68,9 +81,17 @@ public class SaveActionListener implements ActionListener
         }
     }
 
-    private void printAll(PrintWriter writer, Collection<MemoryStructure> _eldestStructures) throws JSONException
+    /*
+        Prints all the required values to the file specified by the user
+        @ param PrintWriter _writer: the writer used to write to the file
+        @ param Collection<MemoryStructure> _eldestStructures: a collection of all the HashMaps for the Stack and Heap
+
+        @ throws JSONException
+     */
+    private void printAll(PrintWriter _writer, Collection<MemoryStructure> _eldestStructures) throws JSONException
     {
 
+        // write all boxes in the Stack and Heap to file
         for (MemoryStructure root : _eldestStructures)
         {
             mxCell mxroot = root.getMemoryStructureCell();
@@ -82,9 +103,11 @@ public class SaveActionListener implements ActionListener
                 boxes.put(box);
             }
             rootObj.put("boxes", boxes);
-            rootObj.write(writer);
-            writer.println();
+            rootObj.write(_writer);
+            _writer.println();
         }
+
+        // write out all the components to file
         JSONArray boxes = new JSONArray();
         for (MemoryStructure root : _eldestStructures)
         {
@@ -106,20 +129,27 @@ public class SaveActionListener implements ActionListener
                 boxes.put(box);
             }
         }
-        boxes.write(writer);
-        writer.println();
+        boxes.write(_writer);
+        _writer.println();
     }
 
-    private JSONObject generateJObj(mxCell mxcell) throws JSONException
+    /*
+        Gets all of the values needed for the given cell and stores them in a JSONObject
+        @ param mxCell _mxcell: the cell to have values stored in JSONObject
+
+        @ throws JSONException
+        @ return JSONObject: the JSONObject containing all the required values for the cell
+     */
+    private JSONObject generateJObj(mxCell _mxcell) throws JSONException
     {
         JSONObject jobj = new JSONObject();
 
-        jobj.put("ID", mxcell.getId());
-        jobj.put("Label", mxcell.getValue());
-        jobj.put("X", mxcell.getGeometry().getX());
-        jobj.put("Y", mxcell.getGeometry().getY());
-        jobj.put("Width", mxcell.getGeometry().getWidth());
-        jobj.put("Height", mxcell.getGeometry().getHeight());
+        jobj.put("ID", _mxcell.getId());
+        jobj.put("Label", _mxcell.getValue());
+        jobj.put("X", _mxcell.getGeometry().getX());
+        jobj.put("Y", _mxcell.getGeometry().getY());
+        jobj.put("Width", _mxcell.getGeometry().getWidth());
+        jobj.put("Height", _mxcell.getGeometry().getHeight());
 
         return jobj;
     }
