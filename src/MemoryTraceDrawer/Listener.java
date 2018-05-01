@@ -16,8 +16,8 @@ public class Listener extends MouseAdapter
 
     /*
         Listener class constructor
-        @ param Frame _frame: the Frame instance that is connected to this listener
-        @ param mxGraphComponent _graphComponent: the mxGraphComponent associated with the graph used in Frame,
+        @param _frame: the Frame instance that is connected to this listener
+        @param _graphComponent: the mxGraphComponent associated with the graph used in Frame,
         used to get the mxCell Objects that are selected
      */
     public Listener(Frame _frame, mxGraphComponent _graphComponent)
@@ -64,7 +64,7 @@ public class Listener extends MouseAdapter
                     graph.getModel().beginUpdate();
                     try
                     {
-                        cellMemoryStructure.promptAddBox(graph, cell, e.getX(), e.getY());
+                        cellMemoryStructure.promptAddBox(graph, e.getX(), e.getY());
                     }
                     finally
                     {

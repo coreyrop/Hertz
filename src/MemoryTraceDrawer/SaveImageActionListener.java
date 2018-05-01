@@ -18,7 +18,7 @@ public class SaveImageActionListener implements ActionListener
 
     /*
         SaveImageActionListener class constructor
-        @ param Frame _frame: the Frame instance this SaveImageActionListener is associated with
+        @param _frame: the Frame instance this SaveImageActionListener is associated with
      */
     public SaveImageActionListener(Frame _frame)
     {

@@ -968,7 +968,7 @@ public class mxGraphModel extends mxEventSource implements mxIGraphModel,
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxIGraphModel#getStyle(Object)
+	 * @see com.mxgraph.model.mxIGraphModel#style(Object)
 	 */
 	public String getStyle(Object cell)
 	{

@@ -300,7 +300,7 @@ public class mxRotationHandler extends mxMouseAdapter
 			if (currentState != null)
 			{
 				cell = currentState.getCell();
-				/*deg = mxUtils.getDouble(currentState.getStyle(),
+				/*deg = mxUtils.getDouble(currentState.style(),
 						mxConstants.STYLE_ROTATION);*/
 			}
 

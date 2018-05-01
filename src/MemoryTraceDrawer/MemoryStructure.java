@@ -14,22 +14,28 @@ public class MemoryStructure
 {
     private mxCell structureCell;
     private double structureCell_x, structureCell_width, structureCell_height, nextBoxX, nextBoxY, labelHeight;
-    private dataStoreStyle storeStyle;
+    private DataStoreStyle storeStyle;
     private Frame frame;
     private HashMap<mxCell, ArrayList<mxCell>> boxes;
+    private static final String[] VARIABLE_STYLES = new String[VariableStyle.values().length];
 
-    // Used to assign ID values to boxes for the Stack and Heap
+    // Used to assign ID VARIABLE_STYLES to boxes for the Stack and Heap
     private static int ID_COUNT;
 
     static
     {
         ID_COUNT = 0;
+        for (int i = 0; i < VARIABLE_STYLES.length; i++)
+        {
+            VARIABLE_STYLES[i] = VariableStyle.values()[i].toString();
+        }
     }
+
 
     /*
         Updates ID_COUNT to the passed value
         used for when files are loaded
-        @ param int _count: the value to be set for ID_COUNT
+        @param _count: the value to be set for ID_COUNT
      */
     public static void setIdCount(int _count)
     {
@@ -37,9 +43,40 @@ public class MemoryStructure
     }
 
     // Used to differentiate the styles for Stack and Heap
-    public enum dataStoreStyle
+    public enum DataStoreStyle
     {
-        STACK, HEAP
+        STACK(Styles.getStackStyle(), "Frame's Name"), HEAP(Styles.getHeapStyle(), "Instance's Type");
+        private String style;
+        private String boxPrompt;
+
+        public boolean contains(mxCell cell)
+        {
+            String cellId = cell.getId();
+            return cellId.startsWith(name());
+        }
+
+        public String generateNewId()
+        {
+            int idNum = ID_COUNT;
+            ID_COUNT += 1;
+            return name() + idNum;
+        }
+
+        private String boxPrompt()
+        {
+            return boxPrompt;
+        }
+
+        public String style()
+        {
+            return style;
+        }
+
+        DataStoreStyle(String storeStyle, String boxesCalled)
+        {
+            style = storeStyle;
+            boxPrompt = boxesCalled;
+        }
     }
 
     /*
@@ -47,15 +84,28 @@ public class MemoryStructure
         Tracks ID count for both Primitives and References
         Allows the idCount to be set to a specified value, this is used for when files are loaded
      */
-    public enum variableStyle
+    public enum VariableStyle
     {
-        REFERENCE("Reference"), PRIMITIVE("Primitive");
+        REFERENCE("Reference", Styles.getReferenceStyle()), PRIMITIVE("Primitive", Styles.getPrimitiveStyle());
         private String displayName;
         private int idCount;
+        private String style;
 
-        variableStyle(String _displayName)
+        public boolean instanceOf(mxCell cell)
+        {
+            String cellId = cell.getId();
+            return cellId.startsWith(displayName);
+        }
+
+        public String getStyle()
+        {
+            return style;
+        }
+
+        VariableStyle(String _displayName, String _style)
         {
             displayName = _displayName;
+            style = _style;
         }
 
         public String toString()
@@ -81,18 +131,18 @@ public class MemoryStructure
         Initializes all the fields
         Adds this MemoryStructure to the graph for visual display
         Sets the style for this MemoryStructure in the graph
-        @ param Frame _frame: the Frame instance for this MemoryStructure to be associated with
-        @ param mxGraph _graph: the graph that this MemoryStructure will be in
-        @ param Object _parent: the parent of this MemoryStructure, needed for the graph
-        @ param String _id: the ID to be associated with this MemoryStructure
-        @ param Object _label: the label that will be visually displayed on this MemoryStructure
-        @ param double _x: the x coordinate for this MemoryStructure
-        @ param double _y: the y coordinate for this MemoryStructure
-        @ param double _width: the width of this MemoryStructure
-        @ param double _height: the height of this MemoryStructure
-        @ param dataStoreStyle _storeStyle: the style for this MemoryStructure to plot boxes, either STACK or HEAP
+        @param _frame: the Frame instance for this MemoryStructure to be associated with
+        @param _graph: the graph that this MemoryStructure will be in
+        @param _parent: the parent of this MemoryStructure, needed for the graph
+        @param _id: the ID to be associated with this MemoryStructure
+        @param _label: the label that will be visually displayed on this MemoryStructure
+        @param _x: the x coordinate for this MemoryStructure
+        @param _y: the y coordinate for this MemoryStructure
+        @param _width: the width of this MemoryStructure
+        @param _height: the height of this MemoryStructure
+        @param _storeStyle: the style for this MemoryStructure to plot boxes, either STACK or HEAP
      */
-    public MemoryStructure(Frame _frame, mxGraph _graph, Object _parent, String _id, Object _label, double _x, double _y, double _width, double _height, dataStoreStyle _storeStyle)
+    public MemoryStructure(Frame _frame, mxGraph _graph, Object _parent, String _id, Object _label, double _x, double _y, double _width, double _height, DataStoreStyle _storeStyle)
     {
         frame = _frame;
         structureCell_x = _x;
@@ -103,75 +153,56 @@ public class MemoryStructure
         nextBoxY = Styles.getDefaultRect().getHeight() + (mxConstants.LABEL_INSET * 2);
         labelHeight = Styles.getDefaultRect().getHeight() + (mxConstants.LABEL_INSET * 2);
         boxes = new HashMap<>();
-
-        if (storeStyle == dataStoreStyle.STACK)
-        {
-            structureCell = (mxCell) _graph.insertVertex(_parent, _id, _label, _x, _y, _width, _height, Styles.getStackStyle());
-        }
-        else
-        {
-            structureCell = (mxCell) _graph.insertVertex(_parent, _id, _label, _x, _y, _width, _height, Styles.getHeapStyle());
-        }
+        structureCell = (mxCell) _graph.insertVertex(_parent, _id, _label, _x, _y, _width, _height, _storeStyle.style());
         structureCell.setConnectable(false);
 
     }
 
     /*
         Calls either addBoxStackStyle or addBoxHeapStyle depending on the storeStyle of this MemoryStructure
-        @ param mxGraph _graph: the graph to add a box to
-        @ param Object _parent: the parent cell for the box to be added
-        @ param double _x: the x coordinate for the box to be added
-        @ param double _y: the y coordinate for the box to be added
+        @param _graph: the graph to add a box to
+        @param _x: the x coordinate for the box to be added
+        @param _y: the y coordinate for the box to be added
 
-        @ returns boolean: true if the box is added, false otherwise
+        @returns boolean: true if the box is added, false otherwise
      */
-    public boolean promptAddBox(mxGraph _graph, Object _parent, double _x, double _y)
+    public boolean promptAddBox(mxGraph _graph, double _x, double _y)
     {
-        if (storeStyle == dataStoreStyle.STACK)
+        String label = JOptionPane.showInputDialog(null, "What is " + storeStyle.boxPrompt());
+        if (label != null)
         {
-            return addBoxStackStyle(_graph, _parent, storeStyle.name());
+            if (storeStyle == DataStoreStyle.STACK)
+            {
+                return addBoxStackStyle(_graph, storeStyle.generateNewId(), label);
+            }
+            else
+            {
+                return addBoxHeapStyle(_graph, _x, _y, storeStyle.generateNewId(), label);
+            }
         }
-        else
-        {
-            return addBoxHeapStyle(_graph, _parent, _x, _y, storeStyle.name());
-        }
+        return false;
     }
 
     /*
-        Prompts the user to input the values to be set for the component added
-        If not all values are provided then the component is not added
-        @ param mxGraph _graph: the graph to add the component to
-        @ param Object _box: the box to add the component to
+        Prompts the user to input the VARIABLE_STYLES to be set for the component added
+        If not all VARIABLE_STYLES are provided then the component is not added
+        @param _graph: the graph to add the component to
+        @param _box: the box to add the component to
 
-        @ returns boolean: true if the component is added, false otherwise
+        @returns boolean: true if the component is added, false otherwise
      */
     public boolean promptAddComponent(mxGraph _graph, Object _box)
     {
         if (boxInStructure(_box))
         {
-            String[] values = new String[variableStyle.values().length];
-            for (int i = 0; i < values.length; i++)
-            {
-                values[i] = variableStyle.values()[i].toString();
-            }
-            String type = (String) JOptionPane.showInputDialog(null, "Select Component Type", "Component Selection", JOptionPane.PLAIN_MESSAGE, null, values, "Reference");
+            String type = (String) JOptionPane.showInputDialog(null, "Select Component Type", "Component Selection", JOptionPane.PLAIN_MESSAGE, null, VARIABLE_STYLES, "Reference");
             if (type != null)
             {
-                String label = JOptionPane.showInputDialog(null, "Enter Component Label");
+                VariableStyle varStyle = VariableStyle.valueOf(type.toUpperCase());
+                String label = JOptionPane.showInputDialog(null, "Enter variable name");
                 if (label != null)
                 {
-                    String style, idString;
-                    if (type.equals(variableStyle.REFERENCE.toString()))
-                    {
-                        style = Styles.getReferenceStyle();
-                        idString = variableStyle.REFERENCE.generateNewId();
-                    }
-                    else
-                    {
-                        style = Styles.getPrimitiveStyle();
-                        idString = variableStyle.PRIMITIVE.generateNewId();
-                    }
-                    addComponent(_graph, _box, label, style, idString);
+                    addComponent(_graph, _box, label, varStyle.getStyle(), varStyle.generateNewId());
                     return true;
                 }
             }
@@ -181,11 +212,11 @@ public class MemoryStructure
 
     /*
         Adds the user specified component to the ArrayList of components for the corresponding box
-        @ param mxGraph _graph: the graph to add the component to
-        @ param Object _box: the box to add the component to
-        @ param String _label: the label that will be visually displayed on this component
-        @ param String _style: the style to be used for the components cell on the graph
-        @ param String _id: the ID to be associated with the component to be added
+        @param mxGraph _graph: the graph to add the component to
+        @param _box: the box to add the component to
+        @param _label: the label that will be visually displayed on this component
+        @param _style: the style to be used for the components cell on the graph
+        @param _id: the ID to be associated with the component to be added
      */
     private void addComponent(mxGraph _graph, Object _box, String _label, String _style, String _id)
     {
@@ -199,70 +230,44 @@ public class MemoryStructure
 
     /*
         Adds a box to this MemoryStructure in the style of a Stack, that is one element on top of the other in descending order
-        @ param mxGraph _graph: the graph to add the box to
-        @ param Object _parent: the parent cell for the box to be added
-        @ param String _idLabel: the label of the ID for the box to be added, this will be concatenated with the proper number
+        @param _graph: the graph to add the box to
+        @param _idLabel: the label of the ID for the box to be added, this will be concatenated with the proper number
 
-        @ returns boolean: true if box is added, false otherwise
+        @returns boolean: true if box is added, false otherwise
      */
-    private boolean addBoxStackStyle(mxGraph _graph, Object _parent, String _idLabel)
+    private boolean addBoxStackStyle(mxGraph _graph, String _idLabel, String label)
     {
-        if (_parent != structureCell)
-        {
-            System.err.println("caught exception");
-            return false;
-        }
-
-        String label = JOptionPane.showInputDialog(null, "Enter Frame Label");
-        if (label != null)
-        {
-            mxCell newBox = (mxCell) _graph.insertVertex(structureCell, _idLabel + Integer.toString(ID_COUNT), label, nextBoxX, nextBoxY, structureCell_width, structureCell_height / 10, Styles.getStackBoxStyle());
-            nextBoxY += (structureCell_height / 10) + labelHeight;
-            nextBoxX = 0; // never change
-            ID_COUNT += 1;
-            ArrayList<mxCell> components = new ArrayList<>();
-            boxes.put(newBox, components);
-            return true;
-        }
-        return false;
+        mxCell newBox = (mxCell) _graph.insertVertex(structureCell, _idLabel, label, nextBoxX, nextBoxY, structureCell_width, structureCell_height / 10, Styles.getStackBoxStyle());
+        nextBoxY += (structureCell_height / 10) + labelHeight;
+        nextBoxX = 0; // never change
+        ArrayList<mxCell> components = new ArrayList<>();
+        boxes.put(newBox, components);
+        return true;
     }
 
     /*
         Adds a box to tis MemoryStructure in the style of a Heap, that is add the box where specified with no strict order
-        @ param mxGraph _graph: the graph to add the box to
-        @ param Object _parent: the parent of the box to be added
-        @ param double _x: the x coordinate for the box to be added
-        @ param double _y: the y coordinate for the bos to be added
-        @ param String _idLabel: the label of the ID for the box to be added, this will be concatenated with the proper number
+        @param mxGraph _graph: the graph to add the box to
+        @param double _x: the x coordinate for the box to be added
+        @param double _y: the y coordinate for the bos to be added
+        @param String _idLabel: the label of the ID for the box to be added, this will be concatenated with the proper number
 
-        @ returns boolean: true if box is added, false otherwise
+        @returns boolean: true if box is added, false otherwise
      */
-    private boolean addBoxHeapStyle(mxGraph _graph, Object _parent, double _x, double _y, String _idLabel)
+    private boolean addBoxHeapStyle(mxGraph _graph, double _x, double _y, String _idLabel, String label)
     {
-        if (_parent != structureCell)
-        {
-            System.err.println("caught exception");
-            return false;
-        }
-        String label = JOptionPane.showInputDialog(null, "Enter Instance Label");
+        double newBoxX = _x - structureCell_x;
+        mxCell newBox = (mxCell) _graph.insertVertex(structureCell, _idLabel, label, newBoxX, _y, structureCell_width / 10, structureCell_height / 10, Styles.getHeapBoxStyle());
 
-        if (label != null)
-        {
-            double newBoxX = _x - structureCell_x;
-            mxCell newBox = (mxCell) _graph.insertVertex(structureCell, _idLabel + Integer.toString(ID_COUNT), label, newBoxX, _y, structureCell_width / 10, structureCell_height / 10, Styles.getHeapBoxStyle());
-            newBox.setSource(null);
-            ID_COUNT += 1;
-            ArrayList<mxCell> components = new ArrayList<>();
-            boxes.put(newBox, components);
-            return true;
-        }
-        return false;
+        ArrayList<mxCell> components = new ArrayList<>();
+        boxes.put(newBox, components);
+        return true;
     }
 
     /*
         Sets the y coordinate to add the next box, this is used with Stack StoreStyle
         Called when a file is loaded
-        @ param double _greatestBoxY: the y coordinate of the last box added to this MemoryStructure
+        @param _greatestBoxY: the y coordinate of the last box added to this MemoryStructure
      */
     public void setNextBoxY(double _greatestBoxY)
     {

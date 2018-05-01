@@ -30,15 +30,15 @@ public class Frame extends JFrame
 
         JMenuBar menuBar = new JMenuBar();
         JMenu file = new JMenu("File");
-        JMenuItem loadItem = new JMenuItem("Load");
-        loadItem.addActionListener(new LoadActionListener(this));
-        file.add(loadItem);
+        JMenuItem loadItem = new JMenuItem("Load Project");
         JMenuItem saveProjectItem = new JMenuItem("Save Project");
-        saveProjectItem.addActionListener(new SaveProjectActionListener(this));
-        file.add(saveProjectItem);
         JMenuItem saveImageItem = new JMenuItem("Save Image");
+        loadItem.addActionListener(new LoadActionListener(this));
+        saveProjectItem.addActionListener(new SaveProjectActionListener(this));
         saveImageItem.addActionListener(new SaveImageActionListener(this));
         file.add(saveImageItem);
+        file.add(loadItem);
+        file.add(saveProjectItem);
         menuBar.add(file);
         setJMenuBar(menuBar);
 
@@ -55,7 +55,7 @@ public class Frame extends JFrame
         Initializes JGraphX
         creates graph and sets styles
         adds Stack and Heap to the graph
-        @ param Dimension _screenSize: the dimension of the display the program is run on
+        @param _screenSize: the dimension of the display the program is run on
      */
     private void makeGraph(Dimension _screenSize)
     {
@@ -67,8 +67,8 @@ public class Frame extends JFrame
         graph.getModel().beginUpdate();
         try
         {
-            stack = new MemoryStructure(this, graph, parent, "ROOTSTACK", "Stack", 0, 0, _screenSize.width / 2, _screenSize.height, MemoryStructure.dataStoreStyle.STACK);
-            heap = new MemoryStructure(this, graph, parent, "ROOTHEAP", "Heap", (_screenSize.width / 2) + 1, 0, _screenSize.width / 2, _screenSize.height, MemoryStructure.dataStoreStyle.HEAP);
+            stack = new MemoryStructure(this, graph, parent, "ROOTSTACK", "Stack", 0, 0, _screenSize.width / 2, _screenSize.height, MemoryStructure.DataStoreStyle.STACK);
+            heap = new MemoryStructure(this, graph, parent, "ROOTHEAP", "Heap", (_screenSize.width / 2) + 1, 0, _screenSize.width / 2, _screenSize.height, MemoryStructure.DataStoreStyle.HEAP);
         }
         finally
         {
@@ -85,8 +85,8 @@ public class Frame extends JFrame
     }
 
     /*
-        @ param Object _cell: a cell in graph
-        @ return Stack or Heap, else null if _cell is neither
+        @param _cell: a cell in graph
+        @return Stack or Heap, else null if _cell is neither
      */
     public MemoryStructure convertCell(Object _cell)
     {

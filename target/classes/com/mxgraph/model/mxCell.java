@@ -163,7 +163,7 @@ public class mxCell implements mxICell, Cloneable, Serializable
 	}
 
 	/* (non-Javadoc)
-	 * @see com.mxgraph.model.mxICell#getStyle()
+	 * @see com.mxgraph.model.mxICell#style()
 	 */
 	public String getStyle()
 	{

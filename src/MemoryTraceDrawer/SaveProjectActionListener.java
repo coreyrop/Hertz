@@ -21,7 +21,7 @@ public class SaveProjectActionListener implements ActionListener
 
     /*
         SaveProjectActionListener class constructor
-        @ param Frame _frame: the Frame instance associated with this SaveProjectActionListener
+        @param _frame: the Frame instance associated with this SaveProjectActionListener
      */
     public SaveProjectActionListener(Frame _frame)
     {
@@ -34,18 +34,31 @@ public class SaveProjectActionListener implements ActionListener
      */
     public void actionPerformed(ActionEvent e)
     {
-        ArrayList<MemoryStructure> elders = new ArrayList<MemoryStructure>();
-        elders.add(frame.getStack());
-        elders.add(frame.getHeap());
-        save(elders);
+        ArrayList<MemoryStructure> elders = getMemoryStructures();
+        String fileName = promptGetSaveFileName();
+        if (fileName != null)
+        {
+            save(elders, fileName);
+        }
     }
 
     /*
-        Prompts the user to select what to save the file as
-        Calls printAll with writer and _eldestStructures as arguments
-        @ param Collection<MemoryStructure> _eldestStructures: a collection of all the HashMaps for the Stack and Heap
+        Gets the MemoryStructures in frame and returns them in an ArrayList
+        @return ArrayList<MemoryStructure>: Collection of all MemoryStructures in frame
      */
-    private void save(Collection<MemoryStructure> _eldestStructures)
+    private ArrayList<MemoryStructure> getMemoryStructures()
+    {
+        ArrayList<MemoryStructure> elders = new ArrayList<>();
+        elders.add(frame.getStack());
+        elders.add(frame.getHeap());
+        return elders;
+    }
+
+    /*
+        Prompts the user to specify the file path to save to
+        @return String: specified file path, or null if cancelled or invalid path selected
+     */
+    private String promptGetSaveFileName()
     {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Specify a file to save");
@@ -56,11 +69,21 @@ public class SaveProjectActionListener implements ActionListener
         {
             File fileToSave = fileChooser.getSelectedFile();
             System.out.println("Save as file: " + fileToSave.getAbsolutePath());
-            if (fileChooser.getSelectedFile() != null)
-            {
+            return fileToSave.getAbsolutePath();
+        }
+        return null;
+    }
+
+    /*
+        Saves all of the data reachable from the Collection's elements into a file with the specified file name.
+        @param _eldestStructures: a collection of all the HashMaps for the MemoryStructures used to hold the program's data
+     */
+    private void save(Collection<MemoryStructure> _eldestStructures, String fileName)
+    {
+
                 try
                 {
-                    PrintWriter writer = new PrintWriter(fileToSave.getAbsolutePath(), "UTF-8");
+                    PrintWriter writer = new PrintWriter(fileName + ".mt", "UTF-8");
 
                     printAll(writer, _eldestStructures);
                     writer.close();
@@ -78,30 +101,24 @@ public class SaveProjectActionListener implements ActionListener
                     e.printStackTrace();
                 }
             }
-        }
-    }
+
 
     /*
         Prints all the required values to the file specified by the user
-        @ param PrintWriter _writer: the writer used to write to the file
-        @ param Collection<MemoryStructure> _eldestStructures: a collection of all the HashMaps for the Stack and Heap
+        @param _writer: the writer used to write to the file
+        @param _eldestStructures: a collection of all the HashMaps for the Stack and Heap
 
-        @ throws JSONException
+        @throws JSONException
      */
     private void printAll(PrintWriter _writer, Collection<MemoryStructure> _eldestStructures) throws JSONException
     {
 
-        // write all boxes in the Stack and Heap to file
+        // write all boxes in the MemoryStructures to file
         for (MemoryStructure root : _eldestStructures)
         {
             mxCell mxroot = root.getMemoryStructureCell();
-            JSONObject rootObj = generateJObj(mxroot);
-            JSONArray boxes = new JSONArray();
-            for (mxCell node : root.getBoxes().keySet())
-            {
-                JSONObject box = generateJObj(node);
-                boxes.put(box);
-            }
+            JSONObject rootObj = displayInfoToJSONObject(mxroot);
+            JSONArray boxes = generateBoxesArray(root);
             rootObj.put("boxes", boxes);
             rootObj.write(_writer);
             _writer.println();
@@ -113,19 +130,7 @@ public class SaveProjectActionListener implements ActionListener
         {
             for (mxCell node : root.getBoxes().keySet())
             {
-                JSONObject box = new JSONObject();
-                box.put("ID", node.getId());
-                JSONArray fields = new JSONArray();
-                for (mxCell leaf : root.getBoxes().get(node))
-                {
-                    JSONObject field = generateJObj(leaf);
-                    if (leaf.getEdgeCount() > 0)
-                    {
-                        field.put("Edge", leaf.getEdgeAt(0).getTerminal(false).getId());
-                    }
-                    fields.put(field);
-                }
-                box.put("Fields", fields);
+                JSONObject box = boxComponentsToJSONObject(root, node);
                 boxes.put(box);
             }
         }
@@ -134,13 +139,57 @@ public class SaveProjectActionListener implements ActionListener
     }
 
     /*
-        Gets all of the values needed for the given cell and stores them in a JSONObject
-        @ param mxCell _mxcell: the cell to have values stored in JSONObject
+        Creates a new JSONObject and stores the provided boxes components in the JSONObject
+        @param _root: The memory containing the box
+        @param _node: the box who's data we are putting in the returned JSONObject
 
-        @ throws JSONException
-        @ return JSONObject: the JSONObject containing all the required values for the cell
+        @throws JSONException
+        @return JSONObject: JSONObject storing all the components of the given box
      */
-    private JSONObject generateJObj(mxCell _mxcell) throws JSONException
+    private JSONObject boxComponentsToJSONObject(MemoryStructure _root, mxCell _node) throws JSONException
+    {
+        JSONObject box = new JSONObject();
+        box.put("ID", _node.getId());
+        JSONArray fields = new JSONArray();
+        for (mxCell leaf : _root.getBoxes().get(_node))
+        {
+            JSONObject field = displayInfoToJSONObject(leaf);
+            if (leaf.getEdgeCount() > 0)
+            {
+                field.put("Edge", leaf.getEdgeAt(0).getTerminal(false).getId());
+            }
+            fields.put(field);
+        }
+        box.put("Fields", fields);
+        return box;
+    }
+
+    /*
+        Creates a JSONArray storing all of the JSONObjects for all the boxes inside of the given MemoryStructure
+        @param _root: The MemoryStructure containing the desired boxes
+
+        @throws JSONException
+        @return JSONArray: JSONArray containing all of the JSONObjects for all of the boxes in _root
+     */
+    private JSONArray generateBoxesArray(MemoryStructure _root) throws JSONException
+    {
+        JSONArray boxes = new JSONArray();
+        for (mxCell node : _root.getBoxes().keySet())
+        {
+            JSONObject box = displayInfoToJSONObject(node);
+            boxes.put(box);
+        }
+        return boxes;
+    }
+
+    /*
+        Gets all of the values needed for the given cell and stores them in a JSONObject
+        @param _mxcell: the cell to have values stored in JSONObject
+
+        @throws JSONException
+        @return JSONObject: the JSONObject containing all the required values for the cell
+     */
+    private JSONObject displayInfoToJSONObject(mxCell _mxcell) throws JSONException
     {
         JSONObject jobj = new JSONObject();
 
