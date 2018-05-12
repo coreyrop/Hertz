@@ -15,8 +15,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 
 public class LoadActionListener implements ActionListener
 {
@@ -48,11 +46,11 @@ public class LoadActionListener implements ActionListener
         if (userSelection == JFileChooser.APPROVE_OPTION)
         {
             File fileToLoad = fileChooser.getSelectedFile();
-            System.out.println("Load file: " + fileToLoad.getAbsolutePath());
             if (fileChooser.getSelectedFile() != null)
             {
                 try
                 {
+                    Encrypter.decrypt(fileToLoad, fileToLoad);
                     Reader reader = new FileReader(fileToLoad);
                     JSONTokener parser = new JSONTokener(reader);
                     JSONObject stack = (JSONObject) parser.nextValue();
@@ -68,7 +66,12 @@ public class LoadActionListener implements ActionListener
                 {
                     jsone.printStackTrace();
                 }
+                finally
+                {
+                    Encrypter.encrypt(fileToLoad, fileToLoad);
+                }
             }
+            Frame.projectChanged = false;
         }
     }
 
@@ -83,42 +86,37 @@ public class LoadActionListener implements ActionListener
     private void loadToDisplay(JSONObject _stack, JSONObject _heap, JSONArray _allComponents)
     {
         // Initialize values needed, set ID trackers to be initially 0
+        clearGraph();
         mxGraphSubClass graph = frame.getGraph();
         int greatestFrameID = 0;
         greatestReferenceID = 0;
         greatestPrimitiveID = 0;
-        double greatestStackBoxY = 0;
-
-        // Delete all the current boxes and fields in the graph, initialize the values that will take their place
-        frame.getStack().clearBoxes();
-        frame.getHeap().clearBoxes();
-        HashMap<mxCell, ArrayList<mxCell>> stackBoxMap = new HashMap<>();
-        HashMap<mxCell, ArrayList<mxCell>> heapBoxMap = new HashMap<>();
-        ArrayList<HashMap<mxCell, ArrayList<mxCell>>> memoryStructureMaps = new ArrayList<>();
-        memoryStructureMaps.add(stackBoxMap);
-        memoryStructureMaps.add(heapBoxMap);
 
         graph.getModel().beginUpdate();
         try
         {
             // Add all boxes for the Stack to the HashMap as keys and, to the graph for visual display
-            JSONArray stackBoxes = getStructureBoxes(_stack, graph, stackBoxMap, frame.getStack().getMemoryStructureCell());
-            JSONObject lastStackBox = stackBoxes.getJSONObject(stackBoxes.length() - 1);
-            greatestFrameID = Integer.parseInt(lastStackBox.getString("ID").substring(5, lastStackBox.getString("ID").length()));
-            greatestStackBoxY = lastStackBox.getDouble("Y");
-
-            // Add all boxes for the Heap to the HashMap as keys, and to the graph for visual display
-            JSONArray heapInstances = getStructureBoxes(_heap, graph, heapBoxMap, frame.getHeap().getMemoryStructureCell());
-            JSONObject lastHeapInstance = heapInstances.getJSONObject(heapInstances.length() - 1);
-            int greatestHeapFrameID = Integer.parseInt(lastHeapInstance.getString("ID").substring(4, lastHeapInstance.getString("ID").length()));
-            if (greatestHeapFrameID > greatestFrameID)
+            JSONArray stackBoxes = getStructureBoxes(_stack, graph, frame.getStack().getMemoryStructureCell());
+            if (stackBoxes.length() > 0)
             {
-                greatestFrameID = greatestHeapFrameID;
+                JSONObject lastStackBox = stackBoxes.getJSONObject(stackBoxes.length() - 1);
+                greatestFrameID = Integer.parseInt(lastStackBox.getString("ID").substring(5, lastStackBox.getString("ID").length()));
+            }
+            // Add all boxes for the Heap to the HashMap as keys, and to the graph for visual display
+            JSONArray heapInstances = getStructureBoxes(_heap, graph, frame.getHeap().getMemoryStructureCell());
+            if (heapInstances.length() > 0)
+            {
+                JSONObject lastHeapInstance = heapInstances.getJSONObject(heapInstances.length() - 1);
+                int greatestHeapFrameID = Integer.parseInt(lastHeapInstance.getString("ID").substring(4, lastHeapInstance.getString("ID").length()));
+                if (greatestHeapFrameID > greatestFrameID)
+                {
+                    greatestFrameID = greatestHeapFrameID;
+                }
             }
 
             // Add all the fields to the proper ArrayList for the correct cell parent as the key in the proper HashMap
             mxGraphModel model = (mxGraphModel) graph.getModel();
-            populateValuesInMap(_allComponents, graph, memoryStructureMaps, model);
+            populateBoxesInGraph(_allComponents, graph, model);
         }
         catch (JSONException e)
         {
@@ -127,9 +125,7 @@ public class LoadActionListener implements ActionListener
         finally
         {
             graph.getModel().endUpdate();
-            frame.getStack().setBoxes(stackBoxMap);
-            frame.getStack().setNextBoxY(greatestStackBoxY);
-            frame.getHeap().setBoxes(heapBoxMap);
+            frame.getStack().calcNextBoxY();
             MemoryStructure.VariableStyle.PRIMITIVE.setIdCount(greatestPrimitiveID + 1);
             MemoryStructure.VariableStyle.REFERENCE.setIdCount(greatestReferenceID + 1);
             MemoryStructure.setIdCount(greatestFrameID + 1);
@@ -138,15 +134,14 @@ public class LoadActionListener implements ActionListener
     }
 
     /*
-        Puts all the components in the proper ArrayLists in their proper HashMap
+        Puts all the components in the proper box for all boxes
         @param _allComponents: the components to be added to the given HashMaps
         @param _graph: the graph that the components will be added to
-        @param _memoryStructureMaps: a collection of all the maps that may have components added to them
         @param _model: the model associated with _graph
 
         @throws JSONException
      */
-    private void populateValuesInMap(JSONArray _allComponents, mxGraphSubClass _graph, Collection<HashMap<mxCell, ArrayList<mxCell>>> _memoryStructureMaps, mxGraphModel _model) throws JSONException
+    private void populateBoxesInGraph(JSONArray _allComponents, mxGraphSubClass _graph, mxGraphModel _model) throws JSONException
     {
         for (int k = 0; k < _allComponents.length(); k++)
         {
@@ -154,35 +149,20 @@ public class LoadActionListener implements ActionListener
             mxCell parent = (mxCell) _model.getCell(components.getString("ID"));
             JSONArray parentsComponents = components.getJSONArray("Fields");
 
-            // Get the proper HashMap depending if parent is in the Stack or the Heap
-            HashMap<mxCell, ArrayList<mxCell>> properMap = null;
-            for (HashMap<mxCell, ArrayList<mxCell>> map : _memoryStructureMaps)
-            {
-                if (map.containsKey(parent))
-                {
-                    properMap = map;
-                    break;
-                }
-            }
-
-            if (properMap != null)
-            {
-                populateArrayLists(_graph, _model, parent, parentsComponents, properMap);
-            }
+            populateArrayLists(_graph, _model, parent, parentsComponents);
         }
     }
 
     /*
-        Adds all the parent's components to the parent's ArrayList in the HashMap
+        Adds all the parent's components to the parent and tracks Reference and Primitive ID numbers
         @param _graph: the graph the components will be added to
         @param _model: the model associated with _graph
         @param _parent: the parent who's components we are adding
-        @param _parentsComponents: the components to add to the parent in the HashMap
-        @param _properMap: the HashMap containing _parent
+        @param _parentsComponents: the components to add to the parent in the HashMapt
 
         @throws JSONException
      */
-    private void populateArrayLists(mxGraphSubClass _graph, mxGraphModel _model, mxCell _parent, JSONArray _parentsComponents, HashMap<mxCell, ArrayList<mxCell>> _properMap) throws JSONException
+    private void populateArrayLists(mxGraphSubClass _graph, mxGraphModel _model, mxCell _parent, JSONArray _parentsComponents) throws JSONException
     {
         String style;
         for (int l = 0; l < _parentsComponents.length(); l++)
@@ -213,7 +193,6 @@ public class LoadActionListener implements ActionListener
             {
                 _graph.insertEdge(null, null, null, newComponent, _model.getCell(component.getString("Edge")));
             }
-            _properMap.get(_parent).add(newComponent);
         }
     }
 
@@ -226,16 +205,35 @@ public class LoadActionListener implements ActionListener
 
         @throws JSONException
      */
-    private JSONArray getStructureBoxes(JSONObject _structure, mxGraphSubClass _graph, HashMap<mxCell, ArrayList<mxCell>> _memoryStructureMap, mxCell _memoryStructureCell) throws JSONException
+    private JSONArray getStructureBoxes(JSONObject _structure, mxGraphSubClass _graph, mxCell _memoryStructureCell) throws JSONException
     {
         JSONArray structureBoxes = (JSONArray) _structure.get("boxes");
         for (int j = 0; j < structureBoxes.length(); j++)
         {
             JSONObject instance = structureBoxes.getJSONObject(j);
             mxCell newBox = (mxCell) _graph.insertVertex(_memoryStructureCell, instance.getString("ID"), instance.getString("Label"), instance.getDouble("X"), instance.getDouble("Y"), instance.getDouble("Width"), instance.getDouble("Height"), Styles.getHeapBoxStyle());
-            _memoryStructureMap.put(newBox, new ArrayList<>());
         }
         return structureBoxes;
+    }
+
+
+    /*
+        Removes all the cells from the graph
+     */
+    private void clearGraph()
+    {
+        mxCell stackCell = frame.getStack().getMemoryStructureCell();
+        mxCell heapCell = frame.getHeap().getMemoryStructureCell();
+        ArrayList<Object> allCells = new ArrayList<>();
+        for (int i = 0; i < stackCell.getChildCount(); i++)
+        {
+            allCells.add(stackCell.getChildAt(i));
+        }
+        for (int j = 0; j < heapCell.getChildCount(); j++)
+        {
+            allCells.add(heapCell.getChildAt(j));
+        }
+        frame.getGraph().removeCells(allCells.toArray());
     }
 
 }

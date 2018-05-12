@@ -1,6 +1,7 @@
 package MemoryTraceDrawer;
 
 import com.mxgraph.util.mxCellRenderer;
+import org.apache.commons.io.FilenameUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -45,13 +46,13 @@ public class SaveImageActionListener implements ActionListener
         if (userSelection == JFileChooser.APPROVE_OPTION)
         {
             File fileToSave = fileChooser.getSelectedFile();
-            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
             if (fileChooser.getSelectedFile() != null)
             {
                 BufferedImage image = mxCellRenderer.createBufferedImage(frame.getGraph(), null, 1, Color.WHITE, true, null);
                 try
                 {
-                    ImageIO.write(image, "PNG", new File(fileToSave.getAbsolutePath() + ".png"));
+                    File imageFile = new File(FilenameUtils.removeExtension(fileChooser.getSelectedFile().getAbsolutePath()) + ".png");
+                    ImageIO.write(image, "PNG", imageFile);
                 }
                 catch (IOException e)
                 {

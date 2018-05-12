@@ -1,6 +1,7 @@
 package MemoryTraceDrawer;
 
 import com.mxgraph.model.mxICell;
+import com.mxgraph.model.mxCell;
 import com.mxgraph.swing.mxGraphComponent;
 
 import javax.swing.*;
@@ -74,8 +75,8 @@ public class Listener extends MouseAdapter
                 // mxCell Object is not Stack or Heap
                 else
                 {
-                    mxICell mxicell = (mxICell) cell;
-                    mxICell mxiparent = mxicell.getParent();
+                    mxCell mxcell = (mxCell) cell;
+                    mxICell mxiparent = mxcell.getParent();
                     MemoryStructure parentStruct = frame.convertCell(mxiparent);
 
                     if (parentStruct != null)
@@ -83,7 +84,7 @@ public class Listener extends MouseAdapter
                         graph.getModel().beginUpdate();
                         try
                         {
-                            parentStruct.promptAddComponent(graph, cell);
+                            parentStruct.promptAddComponent(graph, mxcell);
                         }
                         finally
                         {

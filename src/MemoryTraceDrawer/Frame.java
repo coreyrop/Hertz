@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class Frame extends JFrame
 {
+    public static boolean projectChanged = false;
     private MemoryStructure stack;
     private MemoryStructure heap;
     private mxGraphSubClass graph;
@@ -32,17 +33,19 @@ public class Frame extends JFrame
         JMenu file = new JMenu("File");
         JMenuItem loadItem = new JMenuItem("Load Project");
         JMenuItem saveProjectItem = new JMenuItem("Save Project");
-        JMenuItem saveImageItem = new JMenuItem("Save Image");
+        JMenuItem saveImageItem = new JMenuItem("Export Image");
         loadItem.addActionListener(new LoadActionListener(this));
-        saveProjectItem.addActionListener(new SaveProjectActionListener(this));
+        SaveProjectActionListener spal = new SaveProjectActionListener(this);
+        saveProjectItem.addActionListener(spal);
         saveImageItem.addActionListener(new SaveImageActionListener(this));
-        file.add(saveImageItem);
         file.add(loadItem);
         file.add(saveProjectItem);
+        file.add(saveImageItem);
         menuBar.add(file);
         setJMenuBar(menuBar);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new ApplicationCloseListener(spal));
         setVisible(true);
     }
 

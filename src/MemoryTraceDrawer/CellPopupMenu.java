@@ -27,8 +27,8 @@ public class CellPopupMenu extends JPopupMenu
      */
     public CellPopupMenu(mxGraphSubClass _graph, Object _cell, Frame _frame)
     {
-        this.cell = _cell;
-        mxcell = (mxCell) this.cell;
+        cell = _cell;
+        mxcell = (mxCell) cell;
         graph = _graph;
         frame = _frame;
 
@@ -53,32 +53,29 @@ public class CellPopupMenu extends JPopupMenu
             graph.getModel().beginUpdate();
             try
             {
-                // remove cell from the graph
-                graph.removeCells(new Object[]{cell});
-
                 mxICell parent = mxcell.getParent();
                 MemoryStructure structure = frame.convertCell(parent);
 
                 // case where cell is a box in the Stack or Heap
                 if (structure != null)
                 {
-                    structure.removeBox(cell);
+                    //structure.removeBox(cell);
+                    structure.shiftBoxesUp(mxcell.getGeometry().getY());
                 }
-                // cell is not a box, can be an edge or a component
+                // cell is not a box, might be an edge or it might be a component
                 else
                 {
-                    // if cell is an edge parent would be null, in this case there is nowhere else we need to delete it
-                    if (parent != null)
+                    // check if cell is a component
+                    mxICell elder = parent.getParent();
+                    structure = frame.convertCell(elder);
+                    if (structure != null)
                     {
-                        // cell is a component and should be removed from its ArrayList
-                        mxICell elder = parent.getParent();
-                        structure = frame.convertCell(elder);
-                        if (structure != null)
-                        {
-                            structure.getBoxes().get(parent).remove(cell);
-                        }
+                        // remove this component from the box's list of components
+                        //structure.getBoxes().get(parent).remove(cell);
                     }
                 }
+                graph.removeCells(new Object[]{cell});
+                Frame.projectChanged = true;
             }
             finally
             {
@@ -113,6 +110,7 @@ public class CellPopupMenu extends JPopupMenu
                         double textWidth = (rect.getWidth() + 5);
                         geometry.setWidth(textWidth);
                     }
+                    Frame.projectChanged = true;
                 }
                 finally
                 {

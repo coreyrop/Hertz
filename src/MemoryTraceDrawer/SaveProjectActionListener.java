@@ -12,8 +12,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+
 import java.util.ArrayList;
 import java.util.Collection;
+
+import org.apache.commons.io.FilenameUtils;
+
+
 
 public class SaveProjectActionListener implements ActionListener
 {
@@ -39,6 +44,7 @@ public class SaveProjectActionListener implements ActionListener
         if (fileName != null)
         {
             save(elders, fileName);
+            Frame.projectChanged = false;
         }
     }
 
@@ -67,8 +73,7 @@ public class SaveProjectActionListener implements ActionListener
 
         if (userSelection == JFileChooser.APPROVE_OPTION)
         {
-            File fileToSave = fileChooser.getSelectedFile();
-            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            File fileToSave = new File(FilenameUtils.removeExtension(fileChooser.getSelectedFile().getAbsolutePath()) + ".mt");
             return fileToSave.getAbsolutePath();
         }
         return null;
@@ -80,27 +85,29 @@ public class SaveProjectActionListener implements ActionListener
      */
     private void save(Collection<MemoryStructure> _eldestStructures, String fileName)
     {
+        try
+        {
+            PrintWriter writer = new PrintWriter(fileName, "UTF-8");
 
-                try
-                {
-                    PrintWriter writer = new PrintWriter(fileName + ".mt", "UTF-8");
+            printAll(writer, _eldestStructures);
+            writer.close();
 
-                    printAll(writer, _eldestStructures);
-                    writer.close();
-                }
-                catch (FileNotFoundException e)
-                {
-                    System.err.println("File not found");
-                }
-                catch (UnsupportedEncodingException e)
-                {
-                    System.err.println("Unsupported encoding");
-                }
-                catch (JSONException e)
-                {
-                    e.printStackTrace();
-                }
-            }
+            File file = new File(fileName);
+            Encrypter.encrypt(file, file);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("File not found");
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            System.err.println("Unsupported encoding");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
 
     /*
@@ -128,9 +135,11 @@ public class SaveProjectActionListener implements ActionListener
         JSONArray boxes = new JSONArray();
         for (MemoryStructure root : _eldestStructures)
         {
-            for (mxCell node : root.getBoxes().keySet())
+            mxCell rootCell = root.getMemoryStructureCell();
+            for (int i = 0; i < rootCell.getChildCount(); i++)
             {
-                JSONObject box = boxComponentsToJSONObject(root, node);
+                mxCell node = (mxCell) rootCell.getChildAt(i);
+                JSONObject box = boxComponentsToJSONObject(node);
                 boxes.put(box);
             }
         }
@@ -140,19 +149,19 @@ public class SaveProjectActionListener implements ActionListener
 
     /*
         Creates a new JSONObject and stores the provided boxes components in the JSONObject
-        @param _root: The memory containing the box
         @param _node: the box who's data we are putting in the returned JSONObject
 
         @throws JSONException
         @return JSONObject: JSONObject storing all the components of the given box
      */
-    private JSONObject boxComponentsToJSONObject(MemoryStructure _root, mxCell _node) throws JSONException
+    private JSONObject boxComponentsToJSONObject(mxCell _node) throws JSONException
     {
         JSONObject box = new JSONObject();
         box.put("ID", _node.getId());
         JSONArray fields = new JSONArray();
-        for (mxCell leaf : _root.getBoxes().get(_node))
+        for (int i = 0; i < _node.getChildCount(); i++)
         {
+            mxCell leaf = (mxCell) _node.getChildAt(i);
             JSONObject field = displayInfoToJSONObject(leaf);
             if (leaf.getEdgeCount() > 0)
             {
@@ -174,10 +183,15 @@ public class SaveProjectActionListener implements ActionListener
     private JSONArray generateBoxesArray(MemoryStructure _root) throws JSONException
     {
         JSONArray boxes = new JSONArray();
-        for (mxCell node : _root.getBoxes().keySet())
+        mxCell rootCell = _root.getMemoryStructureCell();
+        for (int i = 0; i < rootCell.getChildCount(); i++)
         {
-            JSONObject box = displayInfoToJSONObject(node);
-            boxes.put(box);
+            mxCell node = (mxCell) rootCell.getChildAt(i);
+            if (!node.isEdge()) // JGraphX treats edges as children, we do not want them evaluated here.
+            {
+                JSONObject box = displayInfoToJSONObject(node);
+                boxes.put(box);
+            }
         }
         return boxes;
     }
@@ -191,16 +205,16 @@ public class SaveProjectActionListener implements ActionListener
      */
     private JSONObject displayInfoToJSONObject(mxCell _mxcell) throws JSONException
     {
-        JSONObject jobj = new JSONObject();
+            JSONObject jobj = new JSONObject();
 
-        jobj.put("ID", _mxcell.getId());
-        jobj.put("Label", _mxcell.getValue());
-        jobj.put("X", _mxcell.getGeometry().getX());
-        jobj.put("Y", _mxcell.getGeometry().getY());
-        jobj.put("Width", _mxcell.getGeometry().getWidth());
-        jobj.put("Height", _mxcell.getGeometry().getHeight());
+            jobj.put("ID", _mxcell.getId());
+            jobj.put("Label", _mxcell.getValue());
+            jobj.put("X", _mxcell.getGeometry().getX());
+            jobj.put("Y", _mxcell.getGeometry().getY());
+            jobj.put("Width", _mxcell.getGeometry().getWidth());
+            jobj.put("Height", _mxcell.getGeometry().getHeight());
 
-        return jobj;
+            return jobj;
     }
 
 }
