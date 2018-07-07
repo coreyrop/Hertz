@@ -1,6 +1,10 @@
 package MemoryTraceDrawer;
 
-import javax.crypto.*;
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
@@ -19,12 +23,13 @@ public class Encrypter
     private static final String TRANSFORMATION = "AES";
     private static final byte[] SALT = ",o.uj}j\\aVB.@^[V_C3>=tWSCdTLq5=o{o(s".getBytes();
 
-    /*
-        Encrypts the data from the input file and writes to the output file
-        @param inputFile: file to be read from
-        @param outputFile: file to write to
+    /**
+     * Encrypts the data from the input file and writes to the output file
+     *
+     * @param inputFile:  file to be read from
+     * @param outputFile: file to write to
      */
-    public static void encrypt(File inputFile, File outputFile)
+    protected static void encrypt(File inputFile, File outputFile)
     {
         KeySpec spec = new PBEKeySpec("70,+qy{{O-\"0E^~l".toCharArray(), SALT, 65536, 256); // AES-256
         SecretKeyFactory f = null;
@@ -40,12 +45,13 @@ public class Encrypter
         }
     }
 
-    /*
-        Decrypts the data from the input file and writes to the output file
-        @param inputFile: file to be read from
-        @param outputFile: file to write to
+    /**
+     * Decrypts the data from the input file and writes to the output file
+     *
+     * @param inputFile:  file to be read from
+     * @param outputFile: file to write to
      */
-    public static void decrypt(File inputFile, File outputFile)
+    protected static void decrypt(File inputFile, File outputFile)
     {
         KeySpec spec = new PBEKeySpec("70,+qy{{O-\"0E^~l".toCharArray(), SALT, 65536, 256); // AES-256
         SecretKeyFactory f = null;
@@ -61,12 +67,13 @@ public class Encrypter
         }
     }
 
-    /*
-        Encrypts or Decrypts the data from inputFile and writes it to outputFile
-        @param cipherMode: either ENCRYPT_MODE or DECRYPT_MODE
-        @param key: the key used for the encryption
-        @param inputFile: the file to read from
-        @param outputFile: the file to write to
+    /**
+     * Encrypts or Decrypts the data from inputFile and writes it to outputFile
+     *
+     * @param cipherMode: either ENCRYPT_MODE or DECRYPT_MODE
+     * @param key:        the key used for the encryption
+     * @param inputFile:  the file to read from
+     * @param outputFile: the file to write to
      */
     private static void doCrypto(int cipherMode, byte[] key, File inputFile, File outputFile)
     {

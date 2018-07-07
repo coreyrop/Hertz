@@ -1,11 +1,11 @@
 package MemoryTraceDrawer;
 
-import com.mxgraph.model.mxICell;
 import com.mxgraph.model.mxCell;
+import com.mxgraph.model.mxICell;
 import com.mxgraph.swing.mxGraphComponent;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.SwingUtilities;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -15,27 +15,28 @@ public class Listener extends MouseAdapter
     private mxGraphComponent graphComponent;
     private boolean popupTrigger;
 
-    /*
-        Listener class constructor
-        @param _frame: the Frame instance that is connected to this listener
-        @param _graphComponent: the mxGraphComponent associated with the graph used in Frame,
-        used to get the mxCell Objects that are selected
+    /**
+     * Listener class constructor
+     *
+     * @param frame:          the Frame instance that is connected to this listener
+     * @param graphComponent: the mxGraphComponent associated with the graph used in Frame,
+     *                        used to get the mxCell Objects that are selected
      */
-    public Listener(Frame _frame, mxGraphComponent _graphComponent)
+    public Listener(Frame frame, mxGraphComponent graphComponent)
     {
-        frame = _frame;
-        graphComponent = _graphComponent;
+        this.frame = frame;
+        this.graphComponent = graphComponent;
         popupTrigger = false;
     }
 
 
-    /*
-        Handles mouseClicked events.
-        Gets the mxCell Object that has been clicked, based on the coordinates of the event.
-        Once the proper mxCell Object is obtained the correct respective popup action is executed:
-            If the click is a popupTrigger: open rename / delete option menu
-            For Stack and Heap: add a box to the MemoryStructure
-            For box in Stack or Heap: add a field to the box
+    /**
+     * Handles mouseClicked events.
+     * Gets the mxCell Object that has been clicked, based on the coordinates of the event.
+     * Once the proper mxCell Object is obtained the correct respective popup action is executed:
+     * If the click is a popupTrigger: open rename / delete option menu
+     * For Stack and Heap: add a box to the MemoryStructure
+     * For box in Stack or Heap: add a field to the box
      */
     public void mouseClicked(MouseEvent e)
     {
@@ -96,8 +97,8 @@ public class Listener extends MouseAdapter
         }
     }
 
-    /*
-        sets popupTrigger flag to be the case of the Event
+    /**
+     * sets popupTrigger flag to be the case of the Event
      */
     public void mousePressed(MouseEvent e)
     {

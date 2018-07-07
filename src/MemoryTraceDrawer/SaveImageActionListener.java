@@ -4,8 +4,7 @@ import com.mxgraph.util.mxCellRenderer;
 import org.apache.commons.io.FilenameUtils;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFileChooser;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -17,13 +16,14 @@ public class SaveImageActionListener implements ActionListener
 {
     private Frame frame;
 
-    /*
-        SaveImageActionListener class constructor
-        @param _frame: the Frame instance this SaveImageActionListener is associated with
+    /**
+     * SaveImageActionListener class constructor
+     *
+     * @param frame: the Frame instance this SaveImageActionListener is associated with
      */
-    public SaveImageActionListener(Frame _frame)
+    public SaveImageActionListener(Frame frame)
     {
-        frame = _frame;
+        this.frame = frame;
     }
 
     @Override
@@ -32,9 +32,9 @@ public class SaveImageActionListener implements ActionListener
         promptSaveImage();
     }
 
-    /*
-        Prompts the user to select what to save the image as
-        Saves the image as specified
+    /**
+     * Prompts the user to select what to save the image as
+     * Saves the image as specified
      */
     private void promptSaveImage()
     {
@@ -48,7 +48,7 @@ public class SaveImageActionListener implements ActionListener
             File fileToSave = fileChooser.getSelectedFile();
             if (fileChooser.getSelectedFile() != null)
             {
-                BufferedImage image = mxCellRenderer.createBufferedImage(frame.getGraph(), null, 1, Color.WHITE, true, null);
+                BufferedImage image = mxCellRenderer.createBufferedImage(frame.getGraph(), null, 1, java.awt.Color.WHITE, true, null);
                 try
                 {
                     File imageFile = new File(FilenameUtils.removeExtension(fileChooser.getSelectedFile().getAbsolutePath()) + ".png");

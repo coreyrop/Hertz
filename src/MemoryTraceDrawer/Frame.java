@@ -4,21 +4,27 @@ import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
 import com.mxgraph.view.mxEdgeStyle;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.ScrollPaneLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.util.Map;
 
 public class Frame extends JFrame
 {
-    public static boolean projectChanged = false;
+    protected static boolean projectChanged = false;
     private MemoryStructure stack;
     private MemoryStructure heap;
     private mxGraphSubClass graph;
 
-    /*
-        Frame class constructor
-        Creates menu bar and options
-        calls makeGraph()
+    /**
+     * Frame class constructor
+     * Creates menu bar and options
+     * calls makeGraph()
      */
     public Frame()
     {
@@ -54,13 +60,14 @@ public class Frame extends JFrame
         Frame frame = new Frame();
     }
 
-    /*
-        Initializes JGraphX
-        creates graph and sets styles
-        adds Stack and Heap to the graph
-        @param _screenSize: the dimension of the display the program is run on
+    /**
+     * Initializes JGraphX
+     * creates graph and sets styles
+     * adds Stack and Heap to the graph
+     *
+     * @param screenSize: the dimension of the display the program is run on
      */
-    private void makeGraph(Dimension _screenSize)
+    private void makeGraph(Dimension screenSize)
     {
         graph = new mxGraphSubClass();
         Object parent = graph.getDefaultParent();
@@ -70,8 +77,8 @@ public class Frame extends JFrame
         graph.getModel().beginUpdate();
         try
         {
-            stack = new MemoryStructure(this, graph, parent, "ROOTSTACK", "Stack", 0, 0, _screenSize.width / 2, _screenSize.height, MemoryStructure.DataStoreStyle.STACK);
-            heap = new MemoryStructure(this, graph, parent, "ROOTHEAP", "Heap", (_screenSize.width / 2) + 1, 0, _screenSize.width / 2, _screenSize.height, MemoryStructure.DataStoreStyle.HEAP);
+            stack = new MemoryStructure(this, graph, parent, "ROOTSTACK", "Stack", 0, 0, screenSize.width / 2, screenSize.height, MemoryStructure.DataStoreStyle.STACK);
+            heap = new MemoryStructure(this, graph, parent, "ROOTHEAP", "Heap", (screenSize.width / 2) + 1, 0, screenSize.width / 2, screenSize.height, MemoryStructure.DataStoreStyle.HEAP);
         }
         finally
         {
@@ -87,17 +94,19 @@ public class Frame extends JFrame
         graphComponent.getGraphHandler().setRemoveCellsFromParent(false);
     }
 
-    /*
-        @param _cell: a cell in graph
-        @return Stack or Heap, else null if _cell is neither
+    /**
+     * returns stack or heap, whichever the provided cell is, returns null if it is neither
+     *
+     * @param cell: a cell in graph
+     * @return Stack or Heap, else null if cell is neither
      */
-    public MemoryStructure convertCell(Object _cell)
+    public MemoryStructure convertCell(Object cell)
     {
-        if (_cell == heap.getMemoryStructureCell())
+        if (cell == heap.getMemoryStructureCell())
         {
             return heap;
         }
-        else if (_cell == stack.getMemoryStructureCell())
+        else if (cell == stack.getMemoryStructureCell())
         {
             return stack;
         }

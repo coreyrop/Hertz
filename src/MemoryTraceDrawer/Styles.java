@@ -21,8 +21,8 @@ public class Styles
     private mxRectangle defaultRect;
     private Map<String, Object> placeHolder;
 
-    /*
-        Contains all of the styles to be used for the cells in the graph
+    /**
+     * Contains all of the styles to be used for the cells in the graph
      */
     private Styles()
     {
@@ -46,42 +46,42 @@ public class Styles
         PrimitiveStyle = mxConstants.STYLE_EDITABLE + assign + zero + end + mxConstants.STYLE_DELETABLE + assign + one + end + mxConstants.STYLE_NOEDGESTYLE + assign + one + end + mxConstants.STYLE_MOVABLE + assign + zero + end + mxConstants.STYLE_RESIZABLE + assign + zero + end + mxConstants.STYLE_OPACITY + assign + zero + end + mxConstants.STYLE_FOLDABLE + assign + zero + end + mxConstants.STYLE_VERTICAL_LABEL_POSITION + assign + mxConstants.ALIGN_MIDDLE + end + mxConstants.STYLE_ALIGN + assign + mxConstants.ALIGN_LEFT + end + mxConstants.STYLE_PORT_CONSTRAINT + assign + mxConstants.DIRECTION_EAST + end;
     }
 
-    public static String getHeapBoxStyle()
+    protected static String getHeapBoxStyle()
     {
         return self.HeapBoxStyle;
     }
 
-    public static String getHeapStyle()
+    protected static String getHeapStyle()
     {
         return self.HeapStyle;
     }
 
-    public static String getPrimitiveStyle()
+    protected static String getPrimitiveStyle()
     {
         return self.PrimitiveStyle;
     }
 
-    public static String getReferenceStyle()
+    protected static String getReferenceStyle()
     {
         return self.ReferenceStyle;
     }
 
-    public static String getStackBoxStyle()
+    protected static String getStackBoxStyle()
     {
         return self.StackBoxStyle;
     }
 
-    public static String getStackStyle()
+    protected static String getStackStyle()
     {
         return self.StackStyle;
     }
 
-    public static mxRectangle getDefaultRect()
+    protected static mxRectangle getDefaultRect()
     {
         return self.defaultRect;
     }
 
-    public static Map<String, Object> getPlaceHolder()
+    protected static Map<String, Object> getPlaceHolder()
     {
         return self.placeHolder;
     }

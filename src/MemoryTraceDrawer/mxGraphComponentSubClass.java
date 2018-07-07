@@ -7,15 +7,15 @@ import com.mxgraph.view.mxGraph;
 public class mxGraphComponentSubClass extends mxGraphComponent
 {
     /**
-     * @param graph
+     * @param graph: graph instance that this instance will be associated with
      */
-    public mxGraphComponentSubClass(mxGraph graph)
+    protected mxGraphComponentSubClass(mxGraph graph)
     {
         super(graph);
     }
 
-    /*
-        Implemented to allow use of the mxGraphHandlerSubClass
+    /**
+     * Implemented to allow use of the mxGraphHandlerSubClass
      */
     @Override
     protected mxGraphHandler createGraphHandler()
